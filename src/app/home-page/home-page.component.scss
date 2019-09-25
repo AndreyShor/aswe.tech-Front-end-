@@ -7,9 +7,11 @@ $gold-color: #E3C322;
 %section_intro {
   .sec__header {
     display: flex;
+    -webkit-display: flex;
     flex-direction: row;
+    -webkit-flex-direction: row;
     margin-top: 40px;
-
+    -webkit-justify-content: center;
     hr {
       width: 500px;
       border: 2px solid $gold-color;
@@ -43,6 +45,9 @@ $gold-color: #E3C322;
   max-width: 100%;
   height: 800px;
   display: flex;
+  -webkit-display: flex;
+  -webkit-justify-content: center;
+  -webkit-flex-wrap: wrap;
   justify-content: center;
   flex-wrap: wrap;
   background-size: cover;
@@ -54,14 +59,20 @@ $gold-color: #E3C322;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    -webkit-display: flex;
+    -webkit-justify-content: center;
+    -webkit-flex-direction: column;
+
 
     h1 {
       margin-bottom: 290px;
       font-family: $font-main;
+      -webkit-justify-content: center;
     }
 
     mat-form-field {
       margin-top: 50px;
+      width: 338px;
     }
   }
 }
@@ -219,12 +230,17 @@ $gold-color: #E3C322;
   .section_1, .section_2, .section_3 {
     h2{
       font-size: 25px;
+      -webkit-font-size: 25px;
     }
     .sec__header{
-      hr{ width: 40%}
+      hr{
+         width: 40%;
+         -webkit-width: 40%;
+      }
     }
     .skills{
       display: flex;
+      -webkit-display: flex;
       flex-wrap: wrap;
       .skill{
         margin-top: 10px;
@@ -237,13 +253,19 @@ $gold-color: #E3C322;
   .section_1, .section_2, .section_3 {
     h2{
       font-size: 17px;
+      -webkit-font-size: 17px;
     }
     .sec__header{
-      hr{ width: 30%}
+      hr{ 
+        width: 30%;
+        -webkit-width: 30%;
+      }
     }
     .about{
       flex-direction: column;
+      -webkit-flex-direction: column;
       justify-content: center;
+      -webkit-justify-content: center;
       .text{
         width: 85%;
       }

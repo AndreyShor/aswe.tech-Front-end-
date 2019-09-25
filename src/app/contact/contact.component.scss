@@ -6,6 +6,7 @@ $gold-color: #E3C322;
         display: flex;
         flex-direction: row;
         margin-top: 150px;
+        -webkit-justify-content: center;
         hr {
             width: 500px;
             border: 2px solid $gold-color;
