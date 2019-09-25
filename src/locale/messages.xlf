@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="nav_home" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav_abme" datatype="html">
+        <source>About Me</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav_por" datatype="html">
+        <source>Portfolio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav_contact" datatype="html">
+        <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Contacts<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="lang_option_ru" datatype="html">
+        <source>Russian</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="lang_option_en" datatype="html">
+        <source>English</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="lang_option_lv" datatype="html">
+        <source>Latvian</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title_1" datatype="html">
+        <source>About Me</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_par_1" datatype="html">
+        <source>Hi, I am a full stack web developer with 5 years of experience in IT. I am passionate about building
+      excellent software that improves the lives of those around me. I specialize in creating software for clients
+      ranging from individuals and small-businesses all the way to large enterprise corporations. I have several years
+      of experience in front-end development and just started in this year to work on back-end side with Node.js
+      framework developed by Google. I am using in development process the range of different technologies from basic
+      HTML and CSS till single page frameworks like Angular with TypeScript, RxJs and Node.js with Express, also I have
+      several experience in NoSQL database like MongoDB and in SQL databases like MySQL.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_par_2" datatype="html">
+        <source>Also, I have had experience on working in design of UI/UX architecture for application and usually I
+      am take the major goal to make user-friendly interface for application to make it easily to use for final consumer
+      and improve the productivity of workers on enterprise side to decrease production costs and increase profit for
+      company. The passion to make good UX architecture gave me such books as “Don&apos;t Make Me Think” - Steve Krug and
+      “Design of familiar things” - Donald Norman. I have good skills in Adobe Photoshop and Adobe XD (Nowadays I prefer
+      more it for work)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_par_3" datatype="html">
+        <source>Final thing about my experience is an Economics and Finance knowledge. While I was studying in
+      College and taking A level program in Economics and finance, I have fully understand all basic macro and micro
+      economics concepts which in my case was from Theory of the Firms(Perfect Competition, monopoly, monopsony and etc)
+      till Global Markets(Fiscal Policy and others 2, protectionism, exchange rate mechanism and regulation of all it )
+      with Financial Markets(Money Market, Capital Market, bonds, shares and stocks, QE, Basel III and go on ). I have
+      several experience in working in different start-ups and fully understand how hard to create good working business
+      structure and can help you to don’t make mistakes on the beginning of your business or if your are big, just give
+      small advice if you will ask me of course :) . </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_1" datatype="html">
+        <source>Web design</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_parag_1" datatype="html">
+        <source>Ready to make your design.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_2" datatype="html">
+        <source>Development</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_parag_2" datatype="html">
+        <source>Black-to-Light Creation </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_3" datatype="html">
+        <source>Economics</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_parag_3" datatype="html">
+        <source>Necessary skill in modern times</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_4" datatype="html">
+        <source>Marketing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home_skill_parag_4" datatype="html">
+        <source>Promotion it is just start</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title_2" datatype="html">
+        <source>Projects</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title_3" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact_phone" datatype="html">
+        <source>Phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact_email" datatype="html">
+        <source>E-mail</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact_adress" datatype="html">
+        <source>Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact_my_adress" datatype="html">
+        <source>Latvia, Riga</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact_send" datatype="html">
+        <source>Send</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/contact/contact.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_name" datatype="html">
+        <source>Andrey Shorstkin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_par_1" datatype="html">
+        <source>My name is Andrey. I am European Union citizen and was born in Riga, Latvia. I am speaking on 3
+    languages. It is English, Russian and Latvian. I have started learning programming in 15 years old and I immediately
+    realized that programming is the thing of my life. I have had several hobbies like gym, finance sciences and rock
+    climbing. I am already have had experience in working in several companies like my last job in Arcona ltd. where I
+    was front-end developer and designer. Also, I have experience in working and studying in different fields of
+    computer science: Web Development, Mechanical engineering with Robotics and desktop application creation with Object
+    Pascal е.
+    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+    I have finish GSCE A level program where I was studying Economics, Mathematics in depth and Geography(Human and
+    Physical)
+    <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+    Nowadays I am studying in the Essex University and I am taking BSc degree in Computer Science. As an developer I am
+    focus on Full stack development in web, but personally I am quite interesting in AI and Machine Learning and Big
+    data
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_educ_header" datatype="html">
+        <source>Education</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_educ_s_1" datatype="html">
+        <source>Rigas 80. Secondary School</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_educ_s_2" datatype="html">
+        <source>Progmesisters </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_educ_s_3" datatype="html">
+        <source>Earlscliffe college</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_educ_s_4" datatype="html">
+        <source>Essex University</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about_contact" datatype="html">
+        <source>CONTACT</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">153</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portfo_page_title" datatype="html">
+        <source>Projects</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portfo_moreP" datatype="html">
+        <source>New projects in development</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portfo_header_1" datatype="html">
+        <source>greens.lv/greens.su</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio-min/portfolio-min.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portfo_desc_1" datatype="html">
+        <source>It is 2 web sites for pharmaceutical company. My role was design and coding front-end and partially back-end
+          . Me aim was to simplify hard information about the product and make it possible to understand the basics
+          concepts about the product in 5 min time of visiting the web site by using UI and UX skills. Also, We was
+          using “pug” and “sass” on frontend and “Node.js” with “express” on the beck-end of development.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio-min/portfolio-min.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portfo_button" datatype="html">
+        <source>MORE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio-min/portfolio-min.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio-min/portfolio-min.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portfo_header_2" datatype="html">
+        <source>asinfo.me</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio-min/portfolio-min.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="portfo_desc_2" datatype="html">
+        <source>It’s my own web site portfolio and resume. All front-end was done on Angular with Angular Material framework,
+          SASS and ExJs for front-end logic. All back-end part was done with Node.js with Express framework and as a
+          data-base for blog and admin menu was taken MongoDb</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/portfolio/portfolio-min/portfolio-min.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

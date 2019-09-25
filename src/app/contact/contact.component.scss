@@ -1,0 +1,107 @@
+$font-main: poppins, sans-serif; //text font
+$gold-color: #E3C322;
+
+%section_intro{
+    .sec__header{
+        display: flex;
+        flex-direction: row;
+        margin-top: 150px;
+        hr {
+            width: 500px;
+            border: 2px solid $gold-color;
+            border-radius: 5px;
+        }
+    }
+}
+
+.contacts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 90px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+    .options {
+        margin: 0px;
+        width: 250px;
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid black ;
+        padding: 10px;
+        border-radius: 10px;
+        transition: box-shadow 0.4s ease-out;
+        img {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+        p h3 {
+            width: 7px;
+            padding: 0;
+            align-items: center;
+        }
+    }
+}
+.Contact{
+    @extend %section_intro;
+    .contact__form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        mat-form-field{
+            margin-top: 30px;
+            width: 900px;
+        }
+    }
+}
+
+// Big Tablet
+@media (max-width: 1025px) {
+  .Contact {
+    h2{
+      font-size: 25px;
+    }
+    .sec__header{
+      hr{ width: 40%}
+    }
+  }
+}
+// Tablet
+@media (max-width: 769px){
+  mat-form-field{
+    max-width: 70%;
+  }
+  .contacts{
+    display: flex;
+    flex-wrap: wrap;
+    .options{
+      margin-top: 10px;
+    }
+  }
+}
+// Phone
+@media(max-width: 426px){
+  .Contact {
+    h2{
+      font-size: 23px;
+    }
+    .sec__header{
+      hr{ width: 35%}
+    }
+  }
+}
+// Small Phone
+@media(max-width: 321px){
+  .Contact {
+    h2{
+      font-size: 21px;
+    }
+    .sec__header{
+      hr{ width: 31%}
+    }
+  }
+}

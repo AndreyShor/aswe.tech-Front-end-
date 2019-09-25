@@ -1,0 +1,79 @@
+<mat-sidenav-container
+  class="sidenav-menu">
+  <mat-sidenav
+    #sidenav
+    mode="over">
+      <mat-list role="list">
+          <mat-list-item role="listitem"><a matLine routerLink="/" i18n='@@nav_home'>Home</a>  </mat-list-item>
+          <mat-list-item role="listitem"><a matLine routerLink="/me" i18n='@@nav_abme'>About Me</a></mat-list-item>
+          <mat-list-item role="listitem"><a matLine routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></mat-list-item>
+          <!-- <mat-list-item role="listitem"><a matLine routerLink="/">Блог</a></mat-list-item>
+          <mat-list-item role="listitem"><a matLine routerLink="/">Услуги</a></mat-list-item> -->
+          <div class="last">
+            <mat-list-item role="listitem" routerLink="/contact" i18n='@@nav_contact'><a>Contacts</a></mat-list-item>
+            <img src="../../assets/img/plus.png" alt="plus">
+          </div>
+      </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button
+        mat-button
+        *ngIf="( isHandset | async ) || (isTablet | async)"
+        (click)="sidenav.open()">
+          <img src="../../assets/img/menu_icon.svg" >
+      </button>
+      <div
+        class="logo">
+          <h2>A</h2>
+      </div>
+      <span class="spacer"></span>
+      <div class="btn_menu_list" *ngIf="( isWeb | async )">
+        <div class="btn_menu"><a routerLink="/" i18n='@@nav_home'>Home</a></div>
+        <div class="btn_menu"><a routerLink="me" i18n='@@nav_abme'>About Me</a></div>
+        <div class="btn_menu"><a routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></div>
+        <!-- <div class="btn_menu"><a routerLink="/">Блог</a></div>
+        <div class="btn_menu"><a routerLink="/">Услуги</a></div> -->
+        <div class="btn_menu"><a routerLink="/contact" i18n='@@nav_contact'>Contacts</a></div>
+      </div>
+    </mat-toolbar>
+    <div [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+
+    <footer>
+        <div class="upper">
+          <div class="logo">
+            <h3>Andrey Shorstkin</h3>
+            <h2>+371 27595578</h2>
+          </div>
+          <ul class="footer_menu">
+            <li class="item"><a routerLink="/" i18n='@@nav_home' >Home</a></li>
+            <li class="item"><a routerLink="/me" i18n='@@nav_abme'>About Me</a></li>
+            <li class="item"><a routerLink="/portfolio" i18n='@@nav_por' >Portfolio</a></li>
+            <!-- <li class="item"><a routerLink="/">Блог</a></li>
+            <li class="item"><a routerLink="/">Услуги</a></li> -->
+            <li class="item"><a routerLink="/contact" i18n='@@nav_contact'>Contacts</a></li>
+          </ul>
+        </div>
+        <div class="lower">
+          <ul class="copyright">
+            <li>Address: Riga, Latvia </li>
+            <li>Andrey: andrejs232@gmail.com</li>
+            <li>© Copyright 2019</li>
+          </ul>
+          <mat-form-field>
+            <mat-select placeholder="Language Choice" class="select_menu " i18n='@@lang_choice'>
+              <mat-option value="option" i18n='@@lang_option_ru' (click)="changeLang('ru')">Russian</mat-option>
+              <mat-option value="option" i18n='@@lang_option_en' (click)="changeLang('en')">English</mat-option>
+              <mat-option value="option" i18n='@@lang_option_lv'>Latvian</mat-option>
+          </mat-select>
+          </mat-form-field>
+
+        </div>
+      </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

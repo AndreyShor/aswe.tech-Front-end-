@@ -1,0 +1,121 @@
+<div layout="row" class="section_1">
+  <div class="intro">
+    <h1 class="fadeIn">Andrey Shorstkin</h1>
+    <mat-form-field>
+      <mat-select placeholder="Choice Language" class="select_menu">
+        <mat-option value="option" i18n='@@lang_option_ru' (click)="changeLang('ru')" >Russian</mat-option>
+        <mat-option value="option" i18n='@@lang_option_en' (click)="changeLang('en')">English</mat-option>
+        <mat-option value="option" i18n='@@lang_option_lv'>Latvian</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div layout="row" class="section_2">
+  <div class="sec__header">
+    <hr>
+    <h2 i18n='@@title_1'>About Me</h2>
+    <hr>
+  </div>
+  <div class="about">
+    <p class="text" i18n='@@home_par_1'>Hi, I am a full stack web developer with 5 years of experience in IT. I am passionate about building
+      excellent software that improves the lives of those around me. I specialize in creating software for clients
+      ranging from individuals and small-businesses all the way to large enterprise corporations. I have several years
+      of experience in front-end development and just started in this year to work on back-end side with Node.js
+      framework developed by Google. I am using in development process the range of different technologies from basic
+      HTML and CSS till single page frameworks like Angular with TypeScript, RxJs and Node.js with Express, also I have
+      several experience in NoSQL database like MongoDB and in SQL databases like MySQL.</p>
+    <p class="text" i18n='@@home_par_2'>Also, I have had experience on working in design of UI/UX architecture for application and usually I
+      am take the major goal to make user-friendly interface for application to make it easily to use for final consumer
+      and improve the productivity of workers on enterprise side to decrease production costs and increase profit for
+      company. The passion to make good UX architecture gave me such books as “Don't Make Me Think” - Steve Krug and
+      “Design of familiar things” - Donald Norman. I have good skills in Adobe Photoshop and Adobe XD (Nowadays I prefer
+      more it for work)</p>
+    <p class="text" i18n='@@home_par_3'>Final thing about my experience is an Economics and Finance knowledge. While I was studying in
+      College and taking A level program in Economics and finance, I have fully understand all basic macro and micro
+      economics concepts which in my case was from Theory of the Firms(Perfect Competition, monopoly, monopsony and etc)
+      till Global Markets(Fiscal Policy and others 2, protectionism, exchange rate mechanism and regulation of all it )
+      with Financial Markets(Money Market, Capital Market, bonds, shares and stocks, QE, Basel III and go on ). I have
+      several experience in working in different start-ups and fully understand how hard to create good working business
+      structure and can help you to don’t make mistakes on the beginning of your business or if your are big, just give
+      small advice if you will ask me of course :) . </p>
+    <hr>
+  </div>
+  <div class="line">
+    <hr>
+  </div>
+  <div class="skills">
+    <div class="skill">
+      <img src="../../assets/img/des.jpg" alt="">
+      <h3 i18n='@@home_skill_1'>Web design</h3>
+      <p i18n='@@home_skill_parag_1'>Ready to make your design.</p>
+    </div>
+    <div class="skill">
+      <img src="../../assets/img/dev.jpg" alt="">
+      <h3 i18n='@@home_skill_2'>Development</h3>
+      <p i18n='@@home_skill_parag_2'>Black-to-Light Creation </p>
+    </div>
+    <div class="skill">
+      <img src="../../assets/img/eco.jpg" alt="">
+      <h3 i18n='@@home_skill_3'>Economics</h3>
+      <p i18n='@@home_skill_parag_3'>Necessary skill in modern times</p>
+    </div>
+    <div class="skill">
+      <img src="../../assets/img/mar.jpg" alt="">
+      <h3 i18n='@@home_skill_4'>Marketing</h3>
+      <p i18n='@@home_skill_parag_4'>Promotion it is just start</p>
+    </div>
+  </div>
+</div>
+
+<!-- <div layout="row" class="section_4">
+  <div class="sec__header">
+    <hr>
+    <h2>Блог</h2>
+    <hr>
+  </div>
+  <div class="blog__posts">
+    <div class="post_1 first">
+      <div class="content">
+        <h3>Название статьи </h3>
+        <h4 class="date">Кто выставил - 27 Января 2019</h4>
+        <p>Задача организации, в особенности же постоянный количественный рост и сфера нашей активности играет важную
+          роль в формировании новых предложений. Идейные соображения высшего порядка, а также укрепление и развитие
+          структуры требуют от нас анализа модели развития. Задача организации, в особенности же начало повседневной
+          работы по формированию позиции представляет собой интересный эксперимент проверки существенных финансовых и
+          административных условий. </p>
+        <a href="">Читать далее </a>
+      </div>
+    </div>
+    <div class="post_1 second">
+      <div class="content">
+        <h3>Название статьи </h3>
+        <h4 class="date">Кто выставил - 27 Января 2019</h4>
+        <p>Задача организации, в особенности же постоянный количественный рост и сфера нашей активности играет важную
+          роль в формировании новых предложений. Идейные соображения высшего порядка, а также укрепление и развитие
+          структуры требуют от нас анализа модели развития. Задача организации, в особенности же начало повседневной
+          работы по формированию позиции представляет собой интересный эксперимент проверки существенных финансовых и
+          административных условий. </p>
+        <a href="">Читать далее </a>
+      </div>
+    </div>
+  </div>
+
+  <button mat-raised-button>Подробнее</button>
+</div> -->
+
+
+<div layout="row" class="section_3">
+  <div class="sec__header">
+    <hr>
+    <h2 i18n='@@title_2'>Projects</h2>
+    <hr>
+  </div>
+  <app-portfolio-min></app-portfolio-min>
+  <button
+   mat-raised-button
+   routerLink="/portfolio">More</button>
+</div>
+
+
+<app-contact></app-contact>

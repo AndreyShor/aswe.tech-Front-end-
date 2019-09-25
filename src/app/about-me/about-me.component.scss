@@ -1,0 +1,171 @@
+$main-font: Cambria,
+Cochin,
+Georgia,
+Times,
+'Times New Roman',
+serif;
+
+section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.intro {
+  margin-top: 150px;
+
+  img {
+    width: 115px;
+    height: 123px;
+    border-radius: 100%;
+    margin-bottom: 70px;
+  }
+
+  h2 {
+    font-size: 40px;
+    color: #56C23F;
+    margin-bottom: 20px;
+    font-family: $main-font;
+  }
+
+  p {
+    text-align: left;
+    width: 1300px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+.skills {
+  h3 {
+    color: #6D8C6B;
+    font-family: $main-font;
+  }
+
+  mat-tab-group {
+    margin-top: 30px;
+    width: 90%;
+    .tech{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .element{
+        margin: 40px 50px 0px 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        h4{
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+.education {
+  h2 {
+    color: #6D8C6B;
+    font-family: $main-font;
+  }
+
+  .unit {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+
+    img {
+      width: 300px;
+      height: 180px;
+      justify-self: flex-start;
+      margin-right: 30px;
+    }
+
+    .content {
+      text-align: right;
+      display: flex;
+      align-self: flex-end;
+      flex-direction: column;
+
+      h3 {
+        color: #226f0a;
+        padding-right: 10px;
+      }
+
+      p {
+        width: 1000px;
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+.contact {
+  .contact__btn {
+    border: 2px solid #E3C322;
+    border-radius: 30px;
+    width: 350px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 200px;
+
+    a {
+      text-align: center;
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  .contact__btn:hover {
+    background-color: rgba(51, 51, 49, 0.445);
+
+    a {
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .intro {
+
+    p {
+      text-align: left;
+      width: 380px;
+    }
+  }
+
+  .education {
+    .unit {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      img {
+        width: 300px;
+        height: 180px;
+        justify-self: center;
+        margin-left: 50px;
+        margin-bottom: 30px;
+      }
+
+      .content {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+
+        h3 {
+          color: #226f0a;
+          font-size: 158%;
+        }
+
+        p {
+          width: 320px;
+        }
+      }
+    }
+  }
+}

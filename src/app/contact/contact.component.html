@@ -1,0 +1,58 @@
+<div layout="row" class="Contact">
+  <div class="sec__header">
+      <hr>
+      <h2 i18n='@@title_3'>Contact</h2>
+      <hr>
+  </div>
+
+  <div class="contacts">
+    <div class="options">
+      <img src="../../assets/img/phone.jpg" alt="">
+      <h3 i18n='@@contact_phone'>Phone</h3>
+      <p> +371 27595578 </p>
+    </div>
+    <div class="options">
+      <img src="../../assets/img/mail.jpg" alt="">
+      <h3 i18n='@@contact_email'>E-mail</h3>
+      <p>andrejs232@gmail.com</p>
+    </div>
+    <div class="options">
+      <img src="../../assets/img/location.jpg" alt="">
+      <h3 i18n='@@contact_adress'>Address</h3>
+      <p i18n='@@contact_my_adress'>Latvia, Riga</p>
+    </div>
+  </div>
+
+  <form class="contact__form" #postForm="ngForm" (ngSubmit)="onEmailSend(postForm.value)">
+    <mat-form-field>
+        <input
+         matInput
+         placeholder="Name"
+         id="title"
+         required
+         ngModel
+         name="name">
+    </mat-form-field>
+    <mat-form-field class="mail">
+        <input
+         matInput
+         placeholder="Email"
+         id="mail"
+         required
+         ngModel
+         name="email">
+    </mat-form-field>
+    <mat-form-field>
+        <textarea
+         matInput
+         placeholder="Message"
+         id="content"
+         required
+         ngModel
+         name="content"></textarea>
+    </mat-form-field>
+    <button
+     mat-raised-button
+     [disabled]="!postForm.valid" i18n='@@contact_send'>Send</button>
+  </form>
+</div>

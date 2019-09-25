@@ -1,0 +1,24 @@
+section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 130px;
+}
+  .more{
+      border: 1px solid black;
+      border-radius: 50px;
+      width: 30%;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 70px;
+      margin-top: 40px;
+}
+
+@media(max-width: 426px){
+  .more{
+    width: 300px;
+  }
+
+}

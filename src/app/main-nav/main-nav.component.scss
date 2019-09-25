@@ -1,0 +1,271 @@
+$font-main: poppins,
+sans-serif; //text font
+
+$main-color: #84837F; //header back-ground color
+$gold-color: #E3C322; //buttons text color
+$animation-color: white; // annimation color of button hover
+
+
+.sidenav-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+
+
+  mat-sidenav {
+    width: 300px;
+    background-color: rgba($color: $main-color, $alpha: 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 10000000;
+
+    mat-list {
+      margin-top: 100px;
+
+      mat-list-item {
+        margin: 10px;
+        border-radius: 10px;
+        max-width: 200px;
+        max-height: 100px;
+        margin-left: 40px;
+        text-align: center;
+
+        a {
+          color: $gold-color;
+          font-family: $font-main;
+        }
+
+      }
+
+      .last {
+        margin-top: 100px;
+        display: flex;
+
+        a {
+          color: black;
+        }
+
+        img {
+          width: 80px;
+          margin-left: -80px;
+        }
+      }
+
+      mat-list-item:hover {
+        background-color: $animation-color;
+      }
+    }
+
+  }
+}
+
+mat-sidenav-content {
+  button {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  mat-toolbar {
+    background-color: rgba($color: $main-color, $alpha: 0.8);
+    position: fixed;
+    z-index: 10000000;
+
+    .logo {
+      border-radius: 50%;
+      padding: 5px 15px;
+      text-align: center;
+      background-color: black;
+
+      h2 {
+        color: $animation-color;
+      }
+    }
+
+    .logo:hover {
+      background-color: $animation-color;
+
+      h2 {
+        color: black;
+      }
+    }
+
+    .btn_menu {
+      display: inline-block;
+      color: $gold-color;
+      font-family: poppins, sans-serif;
+      border-radius: 10px;
+      width: 150px;
+      height: 40px;
+      padding-top: 3px;
+      text-align: center;
+      margin-right: 30px;
+
+      a {
+        text-decoration: none;
+        color: $gold-color;
+        font-family: $font-main;
+      }
+    }
+
+    .btn_menu:hover {
+      background-color: $animation-color;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #EFEFEF;
+
+  .upper {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 50px;
+
+    h3,
+    h2 {
+      color: #434343;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    h2 {
+      color: #A2937D;
+      font-size: 40px;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+
+      li {
+        margin-left: 20px;
+        height: 30px;
+        width: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+          text-decoration: none;
+          color: #434343;
+          font-size: 20px;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+      }
+
+      li:hover {
+        background-color: #A2937D;
+        border-radius: 10px;
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .lower {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 50px;
+    padding-left: 10px;
+    margin-top: 20px;
+
+    mat-form-field {
+      width: 300px;
+    }
+
+    ul {
+      list-style-type: none;
+      font-size: 10px;
+    }
+  }
+}
+
+// Tablet
+@media(max-width: 769px) {
+  footer {
+    .upper {
+      ul {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// Big Phone
+@media (max-width: 600px) {
+  footer {
+    .upper {
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 60px;
+
+      h3,
+      h2 {
+        padding-left: 30px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      ul {
+        flex-direction: column;
+        padding-left: 60px;
+      }
+    }
+
+    .lower {
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 0px;
+      padding-left: 50px;
+
+      mat-form-field {
+        order: -1;
+      }
+
+      ul {
+        padding-left: 80px;
+      }
+    }
+  }
+}
+
+// Small Phone
+@media(max-width: 321px) {
+
+  mat-sidenav {
+    max-width: 250px;
+  }
+
+  footer {
+    mat-form-field {
+      max-width: 80%;
+    }
+
+    .upper {
+      .footer_menu {
+        padding-left: 20px;
+      }
+    }
+
+    .lower {
+      ul {
+        padding-left: 0px;
+      }
+    }
+  }
+}
