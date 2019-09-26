@@ -204,6 +204,16 @@
 					</context>
 				</context-group>
 			</trans-unit>
+      <trans-unit id="lang_choice" datatype="html">
+        <source>Language Choice</source>
+        <target>
+					Выбор Языка
+				</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-nav/main-nav.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
 			<trans-unit id="title_1" datatype="html">
 				<source>
 					About Me
@@ -609,6 +619,20 @@
 					</context>
 				</context-group>
 			</trans-unit>
+      <trans-unit id="about_educ_des_1" datatype="html">
+        <source>
+        Rigas 80 is a school in Latvia where I received basic education up to grade 10. In total, we studied 14 subjects
+        from the humanities such as Russian, Latvian, English and World History to the exact sciences like chemistry,
+        physics and mathematics
+      </source>
+      <target>
+        Rigas 80 vidusskola школа в Латвии в которой я получал базовое образование до 10 класса. Всего мы изучали 14 предметов от гуманитарных наук такие как Русский, Латышский, Английский языки и Мировую историю до точных наук как химия, физика и матиматика
+      </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
 			<trans-unit id="about_educ_s_2" datatype="html">
 				<source>
 					Progmesisters
@@ -625,6 +649,19 @@
 					</context>
 				</context-group>
 			</trans-unit>
+      <trans-unit id="about_educ_des_2" datatype="html">
+        <source> In Progmeistars, I studied the basics of Computer Science based on 2 programming languages: Pascal and Object
+        Pascal (on which we got OOP and on which we created applications for Windows), the course also included the
+        basics of algorithms and basic knowledge of HTML and CSS
+      </source>
+      <target>
+					В Progmeistars я изучал основы Computer Science на базе 2 языков програмитрования это Pascal и Object Pascal (на котором нам приподовали OOP и на котором мы создавали приложения для Windows) в курс так же входили основы алгоритмов и базывые знания HTML и CSS
+				</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">126</context>
+        </context-group>
+      </trans-unit>
 			<trans-unit id="about_educ_s_3" datatype="html">
 				<source>
 					Earlscliffe college
@@ -640,7 +677,21 @@
 						133
 					</context>
 				</context-group>
-			</trans-unit>
+      </trans-unit>
+       <trans-unit id="about_educ_des_3" datatype="html">
+        <source> In EC, I went through an A level training program, in which I studied in depth 5 subjects: Economics,
+        Mathematics, Physics, Russian and Geography, after this training program I have accumulated a comprehensive
+        supply of knowledge in such fields as finance, social sciences, as well as deep understanding of mathematics as
+        a science and physics which operates on it
+      </source>
+      <target>
+        В Эрлслиффском колледже я проходил программу обучения A level, в которой я углубленно изучал 5 предметов это Economics, Mathematics, Physics, Russian and Geography, после данной программы обучения у меня накапился комплексный запас знаний в таких сверах как финансы, соцальные науки,а так же глубокое понимание Матиматики как науки и физики котороая ей оперирует
+      </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
 			<trans-unit id="about_educ_s_4" datatype="html">
 				<source>
 					Essex University
@@ -656,7 +707,19 @@
 						143
 					</context>
 				</context-group>
-			</trans-unit>
+      </trans-unit>
+       <trans-unit id="about_educ_des_4" datatype="html">
+        <source> Since 2019, I began studying Computer Science at Essex University, where I plan to delve into topics such as
+        artificial intelligence and machine learning
+      </source>
+      <target>
+      C 2019 года я начал изучать Computer Science в Essex University, где я планирую углубиться в такие топики как искуственный интелект и машинной обучение
+      </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about-me/about-me.component.html</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+      </trans-unit>
 			<trans-unit id="about_contact" datatype="html">
 				<source>
 					CONTACT
