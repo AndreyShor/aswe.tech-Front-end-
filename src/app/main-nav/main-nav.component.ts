@@ -1,11 +1,7 @@
-import { Component} from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, share } from 'rxjs/operators';
-
+import { Component, ViewChild, AfterViewChecked} from '@angular/core';
 import { LayoutService } from './../layout.service';
-
-import { slideInAnimation, fadeIn } from './../animations'
+import { Router, NavigationEnd } from '@angular/router';
+import { slideInAnimation, fadeIn } from './../animations';
 import { RouterOutlet } from '@angular/router';
 
 
@@ -18,14 +14,17 @@ import { RouterOutlet } from '@angular/router';
     fadeIn
   ]
 })
-export class MainNavComponent {
+export class MainNavComponent{
 
-  isHandset
-  isTablet
-  isWeb
+  isHandset: any;
+  isTablet: any;
+  isWeb: any;
+  contentContainer: Element;
+
+  // tslint:disable-next-line: no-shadowed-variable
+  constructor(private LayoutService: LayoutService, private router: Router)  {}
 
 
-  constructor(private LayoutService:LayoutService ) {}
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
@@ -45,9 +44,16 @@ export class MainNavComponent {
   }
 
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit(): void {
     this.isHandset = this.LayoutService.isHandset$;
     this.isTablet = this.LayoutService.isTablet$;
     this.isWeb = this.LayoutService.isWeb$;
+
+    this.router.events.filter(event => event instanceof NavigationEnd)
+      .subscribe(() => {
+          const contentContainer = document.querySelector('.mat-sidenav-content') || window;
+          contentContainer.scrollTo(0, 0);
+      });
   }
 }

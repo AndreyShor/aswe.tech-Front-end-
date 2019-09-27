@@ -11,7 +11,7 @@ $gold-color: #E3C322;
     flex-direction: row;
     -webkit-flex-direction: row;
     margin-top: 40px;
-    -webkit-justify-content: center;
+
     hr {
       width: 500px;
       border: 2px solid $gold-color;
@@ -67,7 +67,6 @@ $gold-color: #E3C322;
     h1 {
       margin-bottom: 290px;
       font-family: $font-main;
-      -webkit-justify-content: center;
     }
 
     mat-form-field {
@@ -90,11 +89,13 @@ $gold-color: #E3C322;
     justify-content: center;
     margin-left: 40px;
     margin-top: 40px;
-    .text{
+
+    .text {
       width: 600px;
       padding-left: 20px;
       padding-right: 20px;
     }
+
     .animated {
       animation-duration: 3s;
     }
@@ -225,63 +226,88 @@ $gold-color: #E3C322;
 
   @extend %button-more;
 }
+
 // Tablet
 @media (max-width: 1024px) {
-  .section_1, .section_2, .section_3 {
-    h2{
+
+  .section_1,
+  .section_2,
+  .section_3 {
+    h2 {
       font-size: 25px;
       -webkit-font-size: 25px;
     }
-    .sec__header{
-      hr{
-         width: 40%;
-         -webkit-width: 40%;
+
+    .sec__header {
+      hr {
+        width: 40%;
+        -webkit-width: 40%;
       }
     }
-    .skills{
+
+    .skills {
       display: flex;
       -webkit-display: flex;
       flex-wrap: wrap;
-      .skill{
+
+      .skill {
         margin-top: 10px;
       }
     }
   }
 }
+
 // Phone
-@media(max-width: 426px){
-  .section_1, .section_2, .section_3 {
-    h2{
+@media(max-width: 426px) {
+
+  .section_1,
+  .section_2,
+  .section_3 {
+    h2 {
       font-size: 17px;
       -webkit-font-size: 17px;
     }
-    .sec__header{
-      hr{ 
+
+    .sec__header {
+      hr {
         width: 30%;
         -webkit-width: 30%;
       }
     }
-    .about{
+
+    .about {
       flex-direction: column;
       -webkit-flex-direction: column;
       justify-content: center;
-      -webkit-justify-content: center;
-      .text{
+
+      .text {
         width: 85%;
       }
     }
-    .line{
-     hr{
-       width: 60%
-     }
+
+    .line {
+      hr {
+        width: 60%
+      }
     }
   }
 }
+
 // Small Phone
-@media(max-width: 321px){
-  .section_1, .section_2, .section_3 {
-    h1{
-      font-size: 30px;
+@media(max-width: 321px) {
+  .section_1 {
+    .intro {
+      display: flex;
+      justify-content: center;
+
+      h1 {
+        font-size: 29px;
+      }
+
+      mat-form-field {
+        width: 258px;
+      }
     }
+
   }
 }
