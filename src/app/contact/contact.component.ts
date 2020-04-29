@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Email } from '../mail.model';
+import { ContactService } from './contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -9,18 +10,18 @@ import { Email } from '../mail.model';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private http: HttpClient) {}
+  // tslint:disable-next-line: no-shadowed-variable
+  constructor( public ContactService: ContactService) {}
 
   ngOnInit() {
   }
   onEmailSend(emailData: Email) {
-    this.http
-      .post<{ name: string }>(
-        'http://localhost:3000/api/post/email',
-        emailData
-      )
-      .subscribe(responseData => {
-        console.log(responseData);
-      });
+    if (emailData.invalid) {
+      return;
+    }
+
+    this.ContactService.Send(emailData.name, emailData.email, emailData.content);
+
+
   }
 }
