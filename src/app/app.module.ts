@@ -25,12 +25,12 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioMinComponent } from './portfolio/portfolio-min/portfolio-min.component';
 import { BlogComponent } from './blog/blog.component';
-import { BlogSectionModuleComponent } from './blog/blog-section-module/blog-section-module.component';
 import { ArticleElementComponent } from './blog/article-element/article-element.component';
 import { ArticleListComponent } from './blog/article-list/article-list.component';
 import { ArticleComponent } from './blog/article/article.component';
 import { ArticleCommentComponent } from './blog/article/article-comment/article-comment.component';
-import { BlogSectionComponentComponent } from './blog/blog-section-module/blog-section-component/blog-section-component.component';
+import { CategoryComponent } from './blog/category/category.component';
+import { CategoryElementComponent } from './blog/category/category-element/category-element.component';
 // Roots of user pages
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -50,12 +50,12 @@ const appRoutes: Routes = [
     PortfolioComponent,
     PortfolioMinComponent,
     BlogComponent,
-    BlogSectionModuleComponent,
     ArticleElementComponent,
     ArticleListComponent,
     ArticleComponent,
     ArticleCommentComponent,
-    BlogSectionComponentComponent
+    CategoryComponent,
+    CategoryElementComponent
   ],
   imports: [
     BrowserModule,

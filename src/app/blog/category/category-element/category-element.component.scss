@@ -1,0 +1,25 @@
+$font-main: poppins, sans-serif; //text font
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.category_button{
+  a{
+    width: 300px;
+      height: 300px;
+    .circle{
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid black;
+      background-image: url("/assets/img/blog/eco_section.jpg");
+      background-position: 50% 55%;
+    }
+    h3{
+      font-family: $font-main;
+      font-weight: lighter;
+    }
+  }
+}
