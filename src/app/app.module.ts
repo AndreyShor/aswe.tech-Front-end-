@@ -47,6 +47,7 @@ const appRoutes: Routes = [
   { path: 'blog/article', component: ArticleComponent, data: {animation: 'PortfolioPage'} },
   { path: 'blog/auth', component: SignupSigninComponent, data: {animation: 'PortfolioPage'} },
   { path: 'blog/user-page', component: UserPageComponent, data: {animation: 'PortfolioPage'} },
+  { path: 'blog/admin', component: AdminComponent, data: {animation: 'PortfolioPage'} },
 ];
 
 @NgModule({

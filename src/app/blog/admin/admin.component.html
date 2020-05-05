@@ -1,1 +1,214 @@
-<p>admin works!</p>
+<div class="page_admin">
+  <h1>Панель адменистратора</h1>
+  <section class="users">
+    <h2>Работа с пользователями</h2>
+    <div class="action">
+      <div class="user_list">
+        <div class="label_line">
+          <h3>Список пользователей</h3>
+          <mat-form-field class="searech-line">
+            <mat-label>Страка поиска</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+        <div class="user_list_area">
+          <ul>
+            <li class="user">
+              <div class="name">
+                <h2>Andrey123</h2>
+                <hr>
+              </div>
+              <div class="button button_edit">E</div>
+              <div class="button button_comments">C</div>
+              <div class="button button_ban">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Andrey123</h2>
+                <hr>
+              </div>
+              <div class="button button_edit">E</div>
+              <div class="button button_comments">C</div>
+              <div class="button button_ban">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Andrey123</h2>
+                <hr>
+              </div>
+              <div class="button button_edit">E</div>
+              <div class="button button_comments">C</div>
+              <div class="button button_ban">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Andrey123</h2>
+                <hr>
+              </div>
+              <div class="button button_edit">E</div>
+              <div class="button button_comments">C</div>
+              <div class="button button_ban">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Andrey123</h2>
+                <hr>
+              </div>
+              <div class="button button_edit">E</div>
+              <div class="button button_comments">C</div>
+              <div class="button button_ban">D</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="user_list ban_list">
+        <div class="label_line">
+          <h3>Забаненные пользователи</h3>
+          <mat-form-field class="searech-line">
+            <mat-label>Страка поиска</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+        <div class="user_list_area">
+          <ul>
+            <li class="user">
+              <div class="name">
+                <h2>Nikita2322</h2>
+                <hr>
+              </div>
+              <div class="button button_forgive">F</div>
+              <div class="button button_delete">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Nikita2322</h2>
+                <hr>
+              </div>
+              <div class="button button_forgive">F</div>
+              <div class="button button_delete">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Nikita2322</h2>
+                <hr>
+              </div>
+              <div class="button button_forgive">F</div>
+              <div class="button button_delete">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Nikita2322</h2>
+                <hr>
+              </div>
+              <div class="button button_forgive">F</div>
+              <div class="button button_delete">D</div>
+            </li>
+            <li class="user">
+              <div class="name">
+                <h2>Nikita2322</h2>
+                <hr>
+              </div>
+              <div class="button button_forgive">F</div>
+              <div class="button button_delete">D</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="articles">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Список статей
+        </mat-panel-title>
+        <mat-panel-description>
+          Список всех статей
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>Фильтр по статьям</mat-label>
+        <mat-select>
+          <mat-option>
+            Экономика
+          </mat-option>
+          <mat-option>
+            Программирование
+          </mat-option>
+          <mat-option>
+            Путишествие
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ul class="article_list">
+        <li class="article">
+          <div class="article_name">Реструктуризация финансовых рынков</div>
+          <div class="button button_edit">E</div>
+          <div class="button button_delete">D</div>
+          <hr>
+        </li>
+        <li class="article">
+          <div class="article_name">Реструктуризация финансовых рынков</div>
+          <div class="button button_edit">E</div>
+          <div class="button button_delete">D</div>
+          <hr>
+        </li>
+        <li class="article">
+          <div class="article_name">Реструктуризация финансовых рынков</div>
+          <div class="button button_edit">E</div>
+          <div class="button button_delete">D</div>
+          <hr>
+        </li>
+        <li class="article">
+          <div class="article_name">Реструктуризация финансовых рынков</div>
+          <div class="button button_edit">E</div>
+          <div class="button button_delete">D</div>
+          <hr>
+        </li>
+      </ul>
+    </mat-expansion-panel>
+  </section>
+  <section class="add_article">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Добавить статью
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="add_section">
+        <div class="upper">
+          <mat-form-field class="article_name">
+            <mat-label>Название статьи</mat-label>
+            <input matInput placeholder="Введите название">
+          </mat-form-field>
+          <mat-form-field class="article_filter">
+            <mat-label>Выберете раздел</mat-label>
+            <mat-select>
+              <mat-option>
+                Экономика
+              </mat-option>
+              <mat-option>
+                Программирование
+              </mat-option>
+              <mat-option>
+                Путишествие
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="mytextarea">
+          <mat-form-field appearance="fill" >
+            <mat-label>Текст статьи</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+        </div>
+        <div class="lower">
+          <button mat-button>Выбери картинку</button>
+          <button mat-button>Создать</button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </section>
+
+</div>

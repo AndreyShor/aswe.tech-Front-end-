@@ -1,0 +1,193 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  ;
+}
+
+%button-shared {
+  .button {
+    border: 1px solid black;
+    background-color: #707070;
+    color: white;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: 20px;
+  }
+}
+
+@mixin button_animation($bc, $ba, $tc, $tsc) {
+  background-color: rgba($bc, $ba);
+  color: $tc;
+  text-shadow: -1px 0 $tsc, 0 1px $tsc, 1px 0 $tsc, 0 -1px $tsc;
+}
+
+
+.page_admin {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  margin-top: 150px;
+  width: 100%;
+
+  .users {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    width: 100%;
+    margin-left: 100px;
+
+    .action {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .user_list {
+        margin-top: 50px;
+        margin-right: 70px;
+        width: 600px;
+        border: 1px solid black;
+        height: 420px;
+
+        .label_line {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-end;
+          margin-bottom: 0px;
+          margin-left: 20px;
+
+          h3 {
+            font-family: Poppins;
+            font-size: 20px;
+            margin-right: 20px;
+            margin-bottom: 25px;
+          }
+
+          mat-form-field {
+            margin-left: 50px;
+          }
+        }
+
+        .user_list_area {
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+
+          ul {
+            list-style: none;
+
+            .user {
+              display: flex;
+              flex-direction: row;
+              margin-top: 20px;
+
+              .name {
+                margin-right: 80px;
+
+                hr {
+                  height: 0.2px;
+                  width: 200px;
+                  background-color: black;
+                }
+              }
+
+              @extend %button-shared;
+
+              .button_edit:hover {
+                @include button_animation(#45D662, 0.57, #F6E61F, #707070)
+              }
+
+              .button_comments:hover {
+                @include button_animation(#DDE928, 0.65, #F6E61F, #707070)
+              }
+
+              .button_ban:hover {
+                @include button_animation(#DB2323, 0.40, #F6E61F, #707070)
+              }
+
+              .button_forgive:hover {
+                @include button_animation(#DDE928, 0.65, #33B933, #707070)
+              }
+
+              .button_delete:hover {
+                @include button_animation(#000000, 1.0, white, #707070)
+              }
+            }
+          }
+        }
+      }
+
+      .ban_list {
+        width: 500px;
+      }
+    }
+  }
+
+  .articles {
+    mat-expansion-panel {
+      width: 1000px;
+      margin-top: 150px;
+
+      ul {
+        list-style: none;
+
+        .article {
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 25px;
+
+          .article_name {
+            margin-right: 80px;
+          }
+
+          @extend %button-shared;
+
+          .button_edit:hover {
+            @include button_animation(#45D662, 0.53, #203CFC, #2D11E0)
+          }
+
+          .button_delete:hover {
+            @include button_animation(#FC0000, 0.53, #F6E61F, #FFFF00)
+          }
+        }
+      }
+    }
+  }
+
+  .add_article{
+    mat-expansion-panel {
+      width: 1000px;
+      margin-top: 100px;
+      margin-bottom: 60px;
+      .add_section{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        .upper{
+          display: flex;
+          align-content: flex-start;
+          width: 100%;
+          mat-form-field{
+            margin-right: 200px;
+            width: 250px;
+          }
+        }
+        .mytextarea{
+          width: 800px;
+          height: 400px;
+          mat-form-field{
+            width: 100%;
+            textarea{
+              height: 300px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
