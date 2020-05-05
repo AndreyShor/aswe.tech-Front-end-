@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
 // Web Site's Components
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
@@ -31,13 +32,21 @@ import { ArticleComponent } from './blog/article/article.component';
 import { ArticleCommentComponent } from './blog/article/article-comment/article-comment.component';
 import { CategoryComponent } from './blog/category/category.component';
 import { CategoryElementComponent } from './blog/category/category-element/category-element.component';
+import { AdminComponent } from './blog/admin/admin.component';
+import { UserPageComponent } from './blog/user-page/user-page.component';
+import { SignupSigninComponent } from './blog/signup-signin/signup-signin.component';
 // Roots of user pages
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'contact', component: ContactComponent, data: {animation: 'ContactPage'} },
   { path: 'me', component: AboutMeComponent, data: {animation: 'AboutPage'} },
   { path: 'portfolio', component: PortfolioComponent, data: {animation: 'PortfolioPage'} },
-  { path: 'blog', component: BlogComponent, data: {animation: 'PortfolioPage'} }
+
+  { path: 'blog', component: BlogComponent, data: {animation: 'PortfolioPage'} },
+  { path: 'blog/article-list', component: ArticleListComponent, data: {animation: 'PortfolioPage'} },
+  { path: 'blog/article', component: ArticleComponent, data: {animation: 'PortfolioPage'} },
+  { path: 'blog/auth', component: SignupSigninComponent, data: {animation: 'PortfolioPage'} },
+  { path: 'blog/user-page', component: UserPageComponent, data: {animation: 'PortfolioPage'} },
 ];
 
 @NgModule({
@@ -55,7 +64,10 @@ const appRoutes: Routes = [
     ArticleComponent,
     ArticleCommentComponent,
     CategoryComponent,
-    CategoryElementComponent
+    CategoryElementComponent,
+    AdminComponent,
+    UserPageComponent,
+    SignupSigninComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +81,7 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatExpansionModule,
     MatInputModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,

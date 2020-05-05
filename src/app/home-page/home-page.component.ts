@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
     if (lang === 'ru') {
       localStorage.setItem('locale', 'ru');
       window.location.reload();
-      console.log('Yes work !')
+      console.log('Yes work !');
     }
 
     if (lang === 'en') {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, Data } from '@angular/router';
 import { Subject } from 'rxjs';
-import { ContactData } from './contact.model'
+import { ContactData } from './contact.model';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
