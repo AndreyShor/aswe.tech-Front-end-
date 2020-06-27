@@ -22,3 +22,60 @@ article{
     font-family: $font-main;
   }
 }
+
+// TABLET - Ipad and Ipad PRO
+@media screen and (max-width: 769px){
+  article{
+    img{
+      width: 600px;
+      height: 400px;
+    }
+
+    P{
+      width: 650px;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+// NORMAL PHONE - Iphone 6, 7, 8, Pixel 2, Iphone X
+@media screen and (max-width: 426px){
+  article{
+    img{
+      width: 300px;
+      height: 280px;
+    }
+
+    h2{
+      margin-top: 25px;
+      margin-bottom: 45px;
+      font-size: 28px;
+    }
+
+    P{
+      width: 320px;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+// VERY SMALL PHONE - Iphone 5, Iphone SE
+@media screen and (max-width: 321px) {
+  article{
+    img{
+      width: 280px;
+      height: 260px;
+    }
+
+    h2{
+      margin-top: 25px;
+      margin-bottom: 45px;
+      font-size: 25px;
+    }
+
+    P{
+      width: 300px;
+      margin-bottom: 50px;
+    }
+  }
+}

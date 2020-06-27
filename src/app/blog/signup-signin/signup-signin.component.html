@@ -9,7 +9,7 @@
       <mat-label>Пароль</mat-label>
       <input matInput placeholder="Ведите пароль">
     </mat-form-field>
-    <button mat-stroked-button color="primary"  routerLink="/blog/admin">Воити </button>
+    <button mat-stroked-button color="primary" routerLink="/blog/admin">Воити </button>
   </section>
 
   <section class="signup">
@@ -24,31 +24,43 @@
       </mat-expansion-panel-header>
 
       <h2>Регистраця</h2>
-      <mat-form-field class="">
-        <mat-label>Имя</mat-label>
-        <input matInput placeholder="Ведите имя">
-      </mat-form-field>
-      <mat-form-field class="">
-        <mat-label>Фамилия</mat-label>
-        <input matInput placeholder="Ведите фамилию">
-      </mat-form-field>
-      <mat-form-field class="">
-        <mat-label>Имя пользователя</mat-label>
-        <input matInput placeholder="Ведите имя пользователя">
-      </mat-form-field>
-      <mat-form-field class="">
-        <mat-label>Е-майл</mat-label>
-        <input matInput placeholder="Ведите е-майл">
-      </mat-form-field>
-      <mat-form-field class="">
-        <mat-label>Пароль</mat-label>
-        <input matInput placeholder="Ведите пароль">
-      </mat-form-field>
-      <mat-form-field class="">
-        <mat-label>Подтвердить пароль</mat-label>
-        <input matInput placeholder="Ведите пароль еще раз">
-      </mat-form-field>
-      <button mat-stroked-button routerLink="/blog/user-page">Зарегистрироваться </button>
+      <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+        <mat-form-field class="">
+          <mat-label>Имя</mat-label>
+          <input matInput placeholder="Ведите имя" formControlName="name">
+          <mat-error *ngIf="!signupForm.get('name').valid && signupForm.get('name').touched">Имя должно быть минимум 2 символа</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <mat-label>Фамилия</mat-label>
+          <input matInput placeholder="Ведите фамилию" formControlName="surname">
+          <mat-error *ngIf="!signupForm.get('surname').valid && signupForm.get('surname').touched">Фамилия должна быть минимум 2 символа</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <mat-label>Имя пользователя</mat-label>
+          <input matInput placeholder="Ведите имя пользователя" formControlName="username">
+          <mat-error *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">Имя пользователя минимум 4 симвла</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <mat-label>Е-майл</mat-label>
+          <input type="email" matInput  placeholder="Ведите е-майл" formControlName="email">
+          <mat-error *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">Е-майл введён не верно</mat-error>
+        </mat-form-field>
+        <div formGroupName="passData">
+          <mat-form-field class="">
+            <mat-label>Пароль</mat-label>
+            <input type="password" matInput placeholder="Ведите пароль" formControlName="password">
+            <mat-error *ngIf="!signupForm.get('passData.password').valid && signupForm.get('passData.password').touched">Минимальная длинна пароля 5 симвалов</mat-error>
+          </mat-form-field>
+          <mat-form-field class="">
+            <mat-label>Повторить пароль</mat-label>
+            <input type="password" matInput placeholder="Ведите пароль еще раз" formControlName="confirmPassword">
+            <mat-error *ngIf="!signupForm.get('passData.confirmPassword').valid && signupForm.get('passData.confirmPassword').touched">Ведите пароль</mat-error>
+          </mat-form-field>
+        </div>
+        <mat-error *ngIf="!signupForm.get('passData').valid && signupForm.get('passData').touched">Пароль не совпадает</mat-error>
+        <mat-error #serverDataValidatorErr *ngIf="errServer"></mat-error>
+        <button mat-stroked-button [disabled]="!signupForm.valid">Зарегистрироваться </button>
+      </form>
     </mat-expansion-panel>
   </section>
 </div>

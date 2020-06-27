@@ -49,3 +49,72 @@ section{
   }
 }
 
+@media screen and (max-width: 1029px) {
+  section{
+    .sec__header{
+      h2{
+        font-size: 20px;
+        width: 200px;
+      }
+
+      hr {
+        width: 250px;
+      }
+    }
+  }
+
+  .blog-intro{
+    p{
+      width: 700px;
+    }
+    img{
+      width: 400px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 769px) {
+  section{
+    .sec__header{
+      h2{
+        font-size: 20px;
+        width: 200px;
+      }
+
+      hr {
+        width: 150px;
+      }
+    }
+  }
+
+  .blog-intro{
+    p{
+      width: 650px;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  section{
+    .sec__header{
+      h2{
+        font-size: 17px;
+        width: 160px;
+      }
+
+      hr {
+        width: 50px;
+      }
+    }
+  }
+
+  .blog-intro{
+    p{
+      width: 280px;
+    }
+    img{
+      width: 300px;
+    }
+  }
+}

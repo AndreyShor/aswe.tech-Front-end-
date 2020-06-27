@@ -5,3 +5,28 @@ section{
 app-category-element{
   margin-left: 120px;
 }
+
+// TABLET - Ipad and Ipad PRO
+@media screen and (max-width: 769px){
+  app-category-element{
+    margin-left: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+// NORMAL PHONE - Iphone 6, 7, 8, Pixel 2, Iphone X
+@media screen and (max-width: 426px) {
+  app-category-element{
+    margin-left: 120px;
+
+  }
+}
+// VERY SMALL PHONE - Iphone 5, Iphone SE
+@media screen and (max-width: 321px) {
+  app-category-element{
+    margin-left: 80px;
+
+  }
+}

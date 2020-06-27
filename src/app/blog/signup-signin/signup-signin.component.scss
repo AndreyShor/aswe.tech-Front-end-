@@ -1,4 +1,4 @@
-.page{
+.page {
   display: flex;
   flex-direction: row;
   justify-self: center;
@@ -6,7 +6,8 @@
   margin-top: 200px;
   margin-bottom: 200px;
   margin-left: 40px;
-  section{
+
+  section {
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -16,22 +17,56 @@
     padding: 20px;
 
   }
-  .signin{
+
+  .signin {
     height: 300px;
   }
-  .signup{
+
+  .signup {
     border: none;
-    mat-expansion-panel{
-      .mat-expansion-panel-body{
-          display: flex;
-          flex-direction: column;
-          mat-form-field{
+
+    mat-expansion-panel {
+      .mat-expansion-panel-body {
+        display: flex;
+        flex-direction: column;
+
+        form {
+          mat-form-field {
             width: 500px;
           }
-          button{
+
+          button {
             width: 200px;
           }
+        }
       }
     }
   }
+}
+@media screen and (max-width: 769px) {
+  .page {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 426px) {
+  .page {
+    flex-direction: column;
+    margin-left: 15px;
+    section{
+      width: 350px;
+    }
+
+    .signup {
+      mat-expansion-panel {
+        .mat-expansion-panel-body {
+          form {
+            mat-form-field {
+              width: 240px;
+            }
+          }
+        }
+      }
+    }
+  }
+
 }

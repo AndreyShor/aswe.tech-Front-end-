@@ -26,3 +26,32 @@ article{
     margin-top: 40px;
   }
 }
+
+
+@media screen and (max-width: 426px) {
+  article{
+    .art_image{
+      height: 400px;
+    }
+    h2{
+      width: 360px;
+    }
+    p{
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 321px) {
+  article{
+    .art_image{
+      height: 300px;
+    }
+    h2{
+      width: 300px;
+    }
+    p{
+      width: 80%;
+    }
+  }
+}
