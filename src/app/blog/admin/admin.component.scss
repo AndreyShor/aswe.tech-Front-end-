@@ -79,7 +79,8 @@
 
           ul {
             list-style: none;
-
+            overflow-y: scroll;
+            height: 270px;
             .user {
               display: flex;
               flex-direction: row;
@@ -134,6 +135,8 @@
 
       ul {
         list-style: none;
+        overflow-y: scroll;
+        height: 200px;
 
         .article {
           display: flex;
@@ -190,4 +193,121 @@
       }
     }
   }
+}
+
+
+
+
+// TABLET - Ipad and Ipad PRO
+@media screen and (max-width: 769px){
+ .page_admin{
+   .users{
+      .label_sub_group{
+        width: 500px;
+      }
+     .action{
+      display: flex;
+      flex-direction: column;
+     }
+   }
+
+   .articles{
+    mat-expansion-panel{
+      width: 700px;
+    }
+   }
+
+   .add_article{
+    mat-expansion-panel{
+      width: 700px;
+      .add_section{
+        .mytextarea{
+          width: 650px;
+        }
+        .lower{
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+   }
+ }
+}
+
+// NORMAL PHONE - Iphone 6, 7, 8, Pixel 2, Iphone X
+@media screen and (max-width: 426px){
+  .page_admin{
+    .users{
+      margin-left: 75px;
+      width: 400px;
+       .label_sub_group{
+         width: 300px;
+       }
+      .action{
+       width: 300px;
+       display: flex;
+       flex-direction: column;
+       .user_list{
+        width: 360px;
+        margin-right: 20px;
+        .label_line{
+          h3{
+            font-size: 18px;
+            margin-right: 0px;
+          }
+          .searech-line{
+            width: 100px;
+          }
+        }
+        .user_list_area{
+          ul{
+            .user{
+              .name{
+                margin-right: 40px;
+                h2{
+                  font-size: 16px;
+                }
+                hr{
+                  width: 100px;
+                }
+              }
+              .button{
+                padding-left: 12.5px;
+                padding-right: 12.5px;
+                padding-top: 2.5px;
+                padding-bottom: 2.5px;
+              }
+            }
+          }
+        }
+       }
+      }
+    }
+
+    .articles{
+     mat-expansion-panel{
+       width: 400px;
+     }
+    }
+
+    .add_article{
+     mat-expansion-panel{
+       width: 400px;
+       .add_section{
+         .mytextarea{
+           width: 350px;
+         }
+         .lower{
+           display: flex;
+           flex-direction: column;
+         }
+       }
+     }
+    }
+  }
+}
+
+// VERY SMALL PHONE - Iphone 5, Iphone SE
+@media screen and (max-width: 321px) {
+
 }

@@ -1,15 +1,19 @@
 <div class="page">
   <section class="signin">
     <h2>Логин</h2>
-    <mat-form-field class="">
-      <mat-label>Е-майл</mat-label>
-      <input matInput placeholder="Ведите е-майл">
-    </mat-form-field>
-    <mat-form-field class="">
-      <mat-label>Пароль</mat-label>
-      <input matInput placeholder="Ведите пароль">
-    </mat-form-field>
-    <button mat-stroked-button color="primary" routerLink="/blog/admin">Воити </button>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field class="">
+        <mat-label>Е-майл</mat-label>
+        <input matInput placeholder="Ведите е-майл" formControlName="email">
+        <mat-error *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">Е-майл введён не верно</mat-error>
+      </mat-form-field>
+      <mat-form-field class="">
+        <mat-label>Пароль</mat-label>
+        <input matInput placeholder="Ведите пароль" formControlName="passwordLogin">
+        <mat-error *ngIf="!loginForm.get('passwordLogin').valid && loginForm.get('passwordLogin').touched">Ведите пароль</mat-error>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" [disabled]="!loginForm.valid">Воити </button>
+    </form>
   </section>
 
   <section class="signup">

@@ -20,6 +20,18 @@
 
   .signin {
     height: 300px;
+    form{
+      display: flex;
+      flex-direction: column;
+      mat-form-field {
+        width: 500px;
+      }
+
+      button {
+        width: 200px;
+        margin-top: 20px;
+      }
+    }
   }
 
   .signup {

@@ -213,21 +213,20 @@ $black: rgb(228, 198, 49);
     &:before {
       opacity: 1;
     }
-
     button:hover {
-        .circle {
-          width: 100%;
-          .icon {
-            &.arrow {
-            background: $white;
-            transform: translate(1rem, 0);
-            }
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
           }
         }
-        .button-text {
-          color: $white;
-        }
       }
+      .button-text {
+        color: $white;
+      }
+    }
     }
 
 
@@ -266,3 +265,5 @@ $black: rgb(228, 198, 49);
 
   }
 }
+
+

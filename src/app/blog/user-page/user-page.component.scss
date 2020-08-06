@@ -10,7 +10,7 @@
   flex-direction: column;
   margin-top: 150px;
   width: 100%;
-
+  // All user data
   .user_info {
     display: flex;
     width: 70%;
@@ -46,7 +46,7 @@
         background-repeat: no-repeat;
       }
     }
-
+    // Data without images
     .user_data {
       h2 {
         font-size: medium;
@@ -57,9 +57,184 @@
         width: 700px;
         display: flex;
         justify-content: flex-start;
-        flex-direction: column;
-        .button{
+        flex-direction: row;
+        margin-top: 40px;
 
+        .data {
+          width: 250px;
+          display: flex;
+          flex-direction: column;
+
+          hr {
+            width: 100px;
+            border: 1px solid black;
+          }
+
+          .label {
+            font-weight: 500;
+          }
+        }
+
+        .button {
+          width: 250px;
+          margin-left: 150px;
+        }
+      }
+    }
+  }
+
+  // comments section
+  .comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 400px;
+    width: 100%;
+    border: none;
+
+    .section_name {
+      color: #FABB65;
+      font-size: 45px;
+      margin-bottom: 60px;
+    }
+
+    .comment_list {
+      list-style: none;
+
+      .comment {
+        .label {
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 30px;
+
+          .article_image {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 15px;
+          }
+
+          h2 {
+            font-weight: 400;
+            font-size: 28px;
+          }
+        }
+
+        .comment_body {
+          width: 70%;
+          margin-bottom: 45px;
+        }
+      }
+    }
+  }
+
+
+}
+
+
+
+
+
+// TABLET - Ipad and Ipad PRO
+@media screen and (max-width: 769px) {
+  .page {
+    .user_info {
+      display: flex;
+      flex-direction: column;
+
+      .profile_image {
+        margin-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+
+        .user_image {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .comments {
+      width: 100%;
+      margin-left: 70px;
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 1025px){
+  .page {
+    .user_info {
+      .profile_image {
+        .user_image {
+          width: 300px;
+        }
+      }
+
+      .user_data {
+        li {
+          display: flex;
+          flex-direction: column;
+          width: 90%;
+
+          .button {
+            margin-top: 20px;
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+
+    .comments {
+      width: 90%;
+      margin-left: 30px;
+    }
+  }
+}
+// NORMAL PHONE - Iphone 6, 7, 8, Pixel 2, Iphone X
+@media screen and (max-width: 426px) {
+  .page {
+    .user_info {
+      .profile_image {
+        .user_image {
+          width: 300px;
+        }
+      }
+
+      .user_data {
+        li {
+          display: flex;
+          flex-direction: column;
+          width: 90%;
+
+          .button {
+            margin-top: 20px;
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+
+    .comments {
+      width: 90%;
+      margin-left: 30px;
+    }
+  }
+}
+
+// VERY SMALL PHONE - Iphone 5, Iphone SE
+@media screen and (max-width: 321px) {
+  .page {
+    .user_info {
+      .profile_image {
+        .user_image {
+          margin-left: 50px;
+        }
+        .button{
+          font-size: 12px;
+          margin-left: 25px;
         }
       }
     }

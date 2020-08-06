@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, Data } from '@angular/router';
 import { Subject } from 'rxjs';
-import { SignupData, RegData } from './auth.model';
+import { SignupData, RegData, LoginData, LoginDataServer } from './auth.model';
 
 @Injectable({ providedIn: 'root' })
 export class Auth {
@@ -16,6 +16,19 @@ export class Auth {
           res(serverResponse.message);
         } else {
           rej(serverResponse.err);
+        }
+      });
+    });
+  }
+
+  public login(data: LoginData) {
+    console.log(data);
+    return new Promise((res, rej) => {
+      this.http.post('http://localhost:800/api/blog/signin', data).subscribe((serverResponse: LoginDataServer)  => {
+        if (serverResponse.login === true) {
+          res(serverResponse.message);
+        } else {
+          rej(serverResponse.message);
         }
       });
     });
