@@ -1,40 +1,38 @@
-<mat-sidenav-container
-  class="sidenav-menu">
-  <mat-sidenav
-    #sidenav
-    mode="over">
-      <mat-list role="list">
-          <mat-list-item role="listitem"><a matLine routerLink="/" i18n='@@nav_home'>Home</a>  </mat-list-item>
-          <mat-list-item role="listitem"><a matLine routerLink="/me" i18n='@@nav_abme'>About Me</a></mat-list-item>
-          <mat-list-item role="listitem"><a matLine routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></mat-list-item>
-          <mat-list-item role="listitem"><a matLine routerLink="/blog" i18n='@@nav_por'>Blog</a></mat-list-item>
-          <mat-list-item role="listitem"><a matLine routerLink="/blog/auth" i18n='@@nav_por'>Login</a></mat-list-item>
-          <div class="last">
-            <mat-list-item role="listitem" routerLink="/contact" i18n='@@nav_contact'><a>Contacts</a></mat-list-item>
-            <img src="../../assets/img/plus.png" alt="plus">
-          </div>
-      </mat-list>
+<mat-sidenav-container class="sidenav-menu">
+  <mat-sidenav #sidenav mode="over">
+    <mat-list role="list">
+      <mat-list-item role="listitem"><a matLine routerLink="/" i18n='@@nav_home'>Home</a> </mat-list-item>
+      <mat-list-item role="listitem" *ngIf="!isAuthUser"><a matLine routerLink="/me" i18n='@@nav_abme'>About Me</a></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="!isAuthUser"><a matLine routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></mat-list-item>
+      <mat-list-item role="listitem" ><a matLine routerLink="/blog" i18n='@@nav_por'>Blog</a></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="isAuthUser"><a matLine routerLink="/blog/auth" i18n='@@nav_por' >Admin</a></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="!isAuthUser"><a matLine routerLink="/blog/auth" i18n='@@nav_por' >Login</a></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="isAuthUser"><a matLine (click)="Exit()" i18n='@@nav_por'>Exit</a></mat-list-item>
+      <div class="last">
+        <mat-list-item role="listitem" routerLink="/contact" i18n='@@nav_contact'><a>Contacts</a></mat-list-item>
+        <img src="../../assets/img/plus.png" alt="plus">
+      </div>
+    </mat-list>
   </mat-sidenav>
 
-  <mat-sidenav-content #content cdkScrollable >
+  <mat-sidenav-content #content cdkScrollable>
     <mat-toolbar>
-      <button
-        mat-button
-        *ngIf="( isHandset | async ) || (isTablet | async)"
-        (click)="sidenav.open()">
-          <img src="../../assets/img/menu_icon.svg" >
+      <button mat-button *ngIf="( isHandset | async ) || (isTablet | async)" (click)="sidenav.open()">
+        <img src="../../assets/img/menu_icon.svg">
       </button>
-      <div
-        class="logo">
-          <h2>A</h2>
+      <div class="logo">
+        <h2>A</h2>
       </div>
       <span class="spacer"></span>
       <div class="btn_menu_list" *ngIf="( isWeb | async )">
         <div class="btn_menu"><a routerLink="/" i18n='@@nav_home'>Home</a></div>
-        <div class="btn_menu"><a routerLink="me" i18n='@@nav_abme'>About Me</a></div>
-        <div class="btn_menu"><a routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></div>
+        <div class="btn_menu" *ngIf="!isAuthUser"><a routerLink="me" i18n='@@nav_abme'>About Me</a></div>
+        <div class="btn_menu" *ngIf="!isAuthUser"><a routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></div>
         <div class="btn_menu"><a routerLink="/blog" i18n='@@nav_por'>Blog</a></div>
-        <div class="btn_menu"><a routerLink="/blog/auth" i18n='@@nav_por'>Login</a></div>
+        <div class="btn_menu" *ngIf="isAuthUser"><a routerLink="/blog/user-page" i18n='@@nav_por'>My Profile</a></div>
+        <div class="btn_menu" *ngIf="isAuthUser"><a routerLink="/blog/admin" i18n='@@nav_por'>Admin</a></div>
+        <div class="btn_menu" *ngIf="!isAuthUser"><a routerLink="/blog/auth" i18n='@@nav_por'>Login</a></div>
+        <div class="btn_menu" *ngIf="isAuthUser"><a (click)="onLogOut()" i18n='@@nav_por' >Exit</a></div>
         <div class="btn_menu"><a routerLink="/contact" i18n='@@nav_contact'>Contacts</a></div>
       </div>
     </mat-toolbar>
@@ -43,38 +41,36 @@
     </div>
 
     <footer>
-        <div class="upper">
-          <div class="logo">
-            <h3>Andrey Shorstkin</h3>
-            <h2>+371 27595578</h2>
-          </div>
-          <ul class="footer_menu">
-            <li class="item"><a routerLink="/" i18n='@@nav_home' >Home</a></li>
-            <li class="item"><a routerLink="/me" i18n='@@nav_abme'>About Me</a></li>
-            <li class="item"><a routerLink="/portfolio" i18n='@@nav_por' >Portfolio</a></li>
-            <li class="item"><a routerLink="/blog" i18n='@@nav_por' >Blog</a></li>
-            <!-- <li class="item"><a routerLink="/">Блог</a></li>
+      <div class="upper">
+        <div class="logo">
+          <h3>Andrey Shorstkin</h3>
+          <h2>+371 27595578</h2>
+        </div>
+        <ul class="footer_menu">
+          <li class="item"><a routerLink="/" i18n='@@nav_home'>Home</a></li>
+          <li class="item"><a routerLink="/me" i18n='@@nav_abme'>About Me</a></li>
+          <li class="item"><a routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></li>
+          <li class="item"><a routerLink="/blog" i18n='@@nav_por'>Blog</a></li>
+          <!-- <li class="item"><a routerLink="/">Блог</a></li>
             <li class="item"><a routerLink="/">Услуги</a></li> -->
-            <li class="item"><a routerLink="/contact" i18n='@@nav_contact'>Contacts</a></li>
-          </ul>
-        </div>
-        <div class="lower">
-          <ul class="copyright">
-            <li>Address: Riga, Latvia </li>
-            <li>Andrey: andrejs232@gmail.com</li>
-            <li>© Copyright 2019</li>
-          </ul>
-          <mat-form-field>
-            <mat-select placeholder="Language Choice" class="select_menu " i18n-placeholder='@@lang_choice'>
-              <mat-option value="option" i18n='@@lang_option_ru' (click)="changeLang('ru')">Russian</mat-option>
-              <mat-option value="option" i18n='@@lang_option_en' (click)="changeLang('en')">English</mat-option>
-              <!-- <mat-option value="option" i18n='@@lang_option_lv'>Latvian</mat-option> -->
+          <li class="item"><a routerLink="/contact" i18n='@@nav_contact'>Contacts</a></li>
+        </ul>
+      </div>
+      <div class="lower">
+        <ul class="copyright">
+          <li>Address: Riga, Latvia </li>
+          <li>Andrey: andrejs232@gmail.com</li>
+          <li>© Copyright 2019</li>
+        </ul>
+        <mat-form-field>
+          <mat-select placeholder="Language Choice" class="select_menu " i18n-placeholder='@@lang_choice'>
+            <mat-option value="option" i18n='@@lang_option_ru' (click)="changeLang('ru')">Russian</mat-option>
+            <mat-option value="option" i18n='@@lang_option_en' (click)="changeLang('en')">English</mat-option>
+            <!-- <mat-option value="option" i18n='@@lang_option_lv'>Latvian</mat-option> -->
           </mat-select>
-          </mat-form-field>
+        </mat-form-field>
 
-        </div>
-      </footer>
+      </div>
+    </footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-

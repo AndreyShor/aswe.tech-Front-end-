@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Angular Material Components
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // Web Site's Components
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
@@ -35,6 +36,8 @@ import { CategoryElementComponent } from './blog/category/category-element/categ
 import { AdminComponent } from './blog/admin/admin.component';
 import { UserPageComponent } from './blog/user-page/user-page.component';
 import { SignupSigninComponent } from './blog/signup-signin/signup-signin.component';
+import { AuthInterceptor } from './blog/auth-interceptor';
+import { AuthGuard } from './blog/auth.guard';
 // Roots of user pages
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -46,8 +49,8 @@ const appRoutes: Routes = [
   { path: 'blog/article-list', component: ArticleListComponent, data: {animation: 'PortfolioPage'} },
   { path: 'blog/article', component: ArticleComponent, data: {animation: 'PortfolioPage'} },
   { path: 'blog/auth', component: SignupSigninComponent, data: {animation: 'PortfolioPage'} },
-  { path: 'blog/user-page', component: UserPageComponent, data: {animation: 'PortfolioPage'} },
-  { path: 'blog/admin', component: AdminComponent, data: {animation: 'PortfolioPage'} },
+  { path: 'blog/user-page', component: UserPageComponent, data: {animation: 'PortfolioPage'}, canActivate: [AuthGuard]},
+  { path: 'blog/admin', component: AdminComponent, data: {animation: 'PortfolioPage'}, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -84,12 +87,17 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatExpansionModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

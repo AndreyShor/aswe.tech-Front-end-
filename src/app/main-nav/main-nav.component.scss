@@ -214,6 +214,7 @@ footer {
 // Big Phone
 @media (max-width: 600px) {
   footer {
+    height: 550px;
     .upper {
       flex-direction: column;
       justify-content: center;
@@ -259,6 +260,7 @@ footer {
   }
 
   footer {
+    height: 550px;
     mat-form-field {
       max-width: 80%;
     }

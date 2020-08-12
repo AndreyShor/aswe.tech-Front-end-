@@ -13,8 +13,9 @@ import {
   ValidatorFn
 } from '@angular/forms';
 
-import { Auth } from './auth.service';
-import { SignupData, LoginData } from './auth.model';
+import { Auth } from '../auth.service';
+import { SignupData, LoginData } from '../auth.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-signin',
@@ -25,12 +26,13 @@ import { SignupData, LoginData } from './auth.model';
 export class SignupSigninComponent implements OnInit {
   signupForm: FormGroup;
   loginForm: FormGroup;
+  spinner = false;
 
-  errServer: boolean;
-  @ViewChild('serverDataValidatorErr', {static: true}) serverErrMessage: ElementRef;
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private router: Router) {}
 
+  @ViewChild('errReg', {static: true}) serverErrMessage: ElementRef;
+  @ViewChild('errLogin', {static: true}) serverErrMessageLogin: ElementRef;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -58,14 +60,15 @@ export class SignupSigninComponent implements OnInit {
       email: this.signupForm.get('email').value,
       password: this.signupForm.get('passData.password').value,
     };
-
+    this.spinner = true;
     this.auth.signup(data)
     .then( result => {
-      console.log(result);
+      this.router.navigate(['/blog/user-page']);
+      this.spinner = false;
     })
     .catch( err => {
-      this.serverErrMessage.nativeElement.value = err;
-      this.errServer = true;
+      this.serverErrMessage.nativeElement.innerHTML = err;
+      this.spinner = false;
     });
   }
 
@@ -75,13 +78,14 @@ export class SignupSigninComponent implements OnInit {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('passwordLogin').value
     };
-
+    this.spinner = true;
     this.auth.login(data)
-    .then( result => {
-      console.log(result);
+    .then(() => {
+      this.spinner = false;
     })
-    .catch( err => {
-      this.errServer = true;
+    .catch((errMessage) => {
+      this.serverErrMessageLogin.nativeElement.innerHTML = errMessage;
+      this.spinner = false;
     });
   }
 

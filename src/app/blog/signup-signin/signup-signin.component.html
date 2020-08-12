@@ -1,4 +1,5 @@
 <div class="page">
+  <mat-spinner *ngIf='spinner'></mat-spinner>
   <section class="signin">
     <h2>Логин</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
@@ -14,6 +15,7 @@
       </mat-form-field>
       <button mat-stroked-button color="primary" [disabled]="!loginForm.valid">Воити </button>
     </form>
+    <mat-error #errLogin ></mat-error>
   </section>
 
   <section class="signup">
@@ -62,7 +64,7 @@
           </mat-form-field>
         </div>
         <mat-error *ngIf="!signupForm.get('passData').valid && signupForm.get('passData').touched">Пароль не совпадает</mat-error>
-        <mat-error #serverDataValidatorErr *ngIf="errServer"></mat-error>
+        <mat-error #errReg ></mat-error>
         <button mat-stroked-button [disabled]="!signupForm.valid">Зарегистрироваться </button>
       </form>
     </mat-expansion-panel>
