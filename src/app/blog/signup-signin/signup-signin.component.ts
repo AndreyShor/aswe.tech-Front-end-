@@ -33,6 +33,7 @@ export class SignupSigninComponent implements OnInit {
 
   @ViewChild('errReg', {static: true}) serverErrMessage: ElementRef;
   @ViewChild('errLogin', {static: true}) serverErrMessageLogin: ElementRef;
+  @ViewChild('success', {static: true}) sucessMessage: ElementRef;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -53,6 +54,9 @@ export class SignupSigninComponent implements OnInit {
     });
   }
   onSignUp() {
+    // delete error mesage for second trial
+    this.serverErrMessage.nativeElement.innerHTML = '';
+
     const data: SignupData = {
       name: this.signupForm.get('name').value,
       surname: this.signupForm.get('surname').value,
@@ -62,8 +66,9 @@ export class SignupSigninComponent implements OnInit {
     };
     this.spinner = true;
     this.auth.signup(data)
-    .then( result => {
-      this.router.navigate(['/blog/user-page']);
+    .then( (result: any) => {
+      console.log(result);
+      this.sucessMessage.nativeElement.innerHTML = result;
       this.spinner = false;
     })
     .catch( err => {
@@ -74,6 +79,9 @@ export class SignupSigninComponent implements OnInit {
 
 
   onLogin() {
+    // delete error mesage for second trial
+    this.serverErrMessageLogin.nativeElement.innerHTML = '';
+
     const data: LoginData = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('passwordLogin').value

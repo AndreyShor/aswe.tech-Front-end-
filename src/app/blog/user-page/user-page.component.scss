@@ -11,6 +11,33 @@
   margin-top: 150px;
   width: 100%;
 
+  .edit_section {
+    width: 600px;
+    display: flex;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    flex-direction: column;
+    border: 0.5px solid black;
+    border-radius: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    height: 300px;
+    background-color: white;
+    form{
+      display: flex;
+      flex-direction: column;
+      mat-form-field {
+        width: 500px;
+      }
+
+      button {
+        width: 200px;
+        margin-top: 20px;
+      }
+    }
+  }
+
   mat-spinner{
     position: fixed;
     top: 30%;

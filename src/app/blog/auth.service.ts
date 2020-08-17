@@ -84,7 +84,7 @@ export class Auth {
     this.router.navigate(['/blog/auth']);
   }
 
-
+  // Incase close of browser, it authorised user during 1 hour
   public autoAuthUser() {
     const authInformation = this.getAuthData();
     if (!authInformation) {
@@ -100,6 +100,8 @@ export class Auth {
     }
   }
 
+
+  // Get validation data of user
   public getToken() {
     return this.token;
   }
@@ -118,6 +120,7 @@ export class Auth {
     }, duration * 1000);
   }
 
+  // Manipulation of access data in localstorage
   private saveAuthData(token: string, expirationDate: Date) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());

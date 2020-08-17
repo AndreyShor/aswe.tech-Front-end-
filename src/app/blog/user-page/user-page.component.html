@@ -1,4 +1,29 @@
 <div class="page">
+
+  <section class="edit_section" *ngIf="editOnOff">
+    <h2>Меню редактирования профиля</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onEdit()">
+      <mat-form-field class="" *ngIf="!(editmode === 'email')">
+        <mat-label>{{ editName }}</mat-label>
+        <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="userFullName">
+        <mat-error *ngIf="!editForm.get('userFullName').valid && editForm.get('userFullName').touched">Данные введины не
+          верно</mat-error>
+      </mat-form-field>
+      <mat-form-field class="" *ngIf="editmode === 'email'">
+        <mat-label>{{ editName }}</mat-label>
+        <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="email">
+        <mat-error *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Е-майл введён не верно
+        </mat-error>
+      </mat-form-field>
+      <button mat-stroked-button color="primary" [disabled]="!editForm.controls.email.valid"
+        *ngIf="editmode === 'email'">Изменить </button>
+      <button mat-stroked-button color="primary" [disabled]="!editForm.controls.userFullName.valid"
+        *ngIf="!(editmode === 'email')">Изменить </button>
+      <button mat-stroked-button color="primary" (click)="editFormCloseOpen(false)">Отмена </button>
+    </form>
+    <mat-error #errLogin></mat-error>
+  </section>
+
   <mat-spinner *ngIf='spinner'></mat-spinner>
   <h1>Ваш Профиль</h1>
   <div class="user_info">
@@ -14,7 +39,7 @@
           <hr>
           <div class="label">Ваше Имя</div>
         </div>
-        <div class="button">Сменить Имя</div>
+        <div class="button" (click)="editFormCloseOpen(true, 'Имя', 'name')">Сменить Имя</div>
       </li>
       <li>
         <div class="data">
@@ -22,7 +47,7 @@
           <hr>
           <div class="label">Ваше Фамилия</div>
         </div>
-        <div class="button">Сменить Фамилию</div>
+        <div class="button" (click)="editFormCloseOpen(true, 'Фамилию', 'surname')">Сменить Фамилию</div>
       </li>
       <li>
         <div class="data">
@@ -30,7 +55,7 @@
           <hr>
           <div class="label">Ваш Е-майл</div>
         </div>
-        <div class="button">Сменить Е-майл</div>
+        <div class="button" (click)="editFormCloseOpen(true, 'Е-майл', 'email')">Сменить Е-майл</div>
       </li>
       <li>
         <div class="data">
@@ -38,71 +63,79 @@
           <hr>
           <div class="label">Ваше Пароль</div>
         </div>
-        <div class="button">Сменить Пароль</div>
+        <div class="button" (click)="editFormCloseOpen(true, 'Пароль', 'password' )">Сменить Пароль</div>
       </li>
     </ul>
   </div>
 
-<section class="comments">
+  <section class="comments">
 
-  <h2 class="section_name">Ваши коментарии</h2>
+    <h2 class="section_name">Ваши коментарии</h2>
 
-  <ul class="comment_list">
-    <li class="comment">
-      <div class="label">
-        <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
-        <h2>Реструктуризация финансовых рынков</h2>
-      </div>
-      <div class="comment_body">
-        С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
-        параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
-        проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том, что
-        социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного изменения
-        ряда параметров.
-      </div>
-    </li>
+    <ul class="comment_list">
+      <li class="comment">
+        <div class="label">
+          <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
+          <h2>Реструктуризация финансовых рынков</h2>
+        </div>
+        <div class="comment_body">
+          С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
+          параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
+          проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том,
+          что
+          социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного
+          изменения
+          ряда параметров.
+        </div>
+      </li>
 
-    <li class="comment">
-      <div class="label">
-        <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
-        <h2>Реструктуризация финансовых рынков</h2>
-      </div>
-      <div class="comment_body">
-        С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
-        параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
-        проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том, что
-        социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного изменения
-        ряда параметров.
-      </div>
-    </li>
+      <li class="comment">
+        <div class="label">
+          <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
+          <h2>Реструктуризация финансовых рынков</h2>
+        </div>
+        <div class="comment_body">
+          С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
+          параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
+          проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том,
+          что
+          социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного
+          изменения
+          ряда параметров.
+        </div>
+      </li>
 
-    <li class="comment">
-      <div class="label">
-        <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
-        <h2>Реструктуризация финансовых рынков</h2>
-      </div>
-      <div class="comment_body">
-        С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
-        параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
-        проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том, что
-        социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного изменения
-        ряда параметров.
-      </div>
-    </li>
+      <li class="comment">
+        <div class="label">
+          <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
+          <h2>Реструктуризация финансовых рынков</h2>
+        </div>
+        <div class="comment_body">
+          С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
+          параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
+          проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том,
+          что
+          социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного
+          изменения
+          ряда параметров.
+        </div>
+      </li>
 
-    <li class="comment">
-      <div class="label">
-        <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
-        <h2>Реструктуризация финансовых рынков</h2>
-      </div>
-      <div class="comment_body">
-        С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
-        параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
-        проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том, что
-        социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного изменения
-        ряда параметров.
-      </div>
-    </li>
-  </ul>
-</section>
+      <li class="comment">
+        <div class="label">
+          <img src="/assets/img/blog/eco_section.jpg" alt="article_image" class="article_image">
+          <h2>Реструктуризация финансовых рынков</h2>
+        </div>
+        <div class="comment_body">
+          С другой стороны выбранный нами инновационный путь требует от нас анализа системы масштабного изменения ряда
+          параметров. Дорогие друзья, консультация с профессионалами из IT представляет собой интересный эксперимент
+          проверки позиций, занимаемых участниками в отношении поставленных задач! Не следует, однако, забывать о том,
+          что
+          социально-экономическое развитие влечет за собой процесс внедрения и модернизации системы масштабного
+          изменения
+          ряда параметров.
+        </div>
+      </li>
+    </ul>
+  </section>
 </div>

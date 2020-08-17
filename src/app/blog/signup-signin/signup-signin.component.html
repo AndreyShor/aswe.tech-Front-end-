@@ -5,12 +5,12 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <mat-form-field class="">
         <mat-label>Е-майл</mat-label>
-        <input matInput placeholder="Ведите е-майл" formControlName="email">
+        <input matInput placeholder="Ведите е-майл" type="email" formControlName="email">
         <mat-error *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">Е-майл введён не верно</mat-error>
       </mat-form-field>
       <mat-form-field class="">
         <mat-label>Пароль</mat-label>
-        <input matInput placeholder="Ведите пароль" formControlName="passwordLogin">
+        <input matInput placeholder="Ведите пароль" type="password" formControlName="passwordLogin">
         <mat-error *ngIf="!loginForm.get('passwordLogin').valid && loginForm.get('passwordLogin').touched">Ведите пароль</mat-error>
       </mat-form-field>
       <button mat-stroked-button color="primary" [disabled]="!loginForm.valid">Воити </button>
@@ -33,28 +33,28 @@
       <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
         <mat-form-field class="">
           <mat-label>Имя</mat-label>
-          <input matInput placeholder="Ведите имя" formControlName="name">
+          <input matInput placeholder="Ведите имя" type="name"formControlName="name">
           <mat-error *ngIf="!signupForm.get('name').valid && signupForm.get('name').touched">Имя должно быть минимум 2 символа</mat-error>
         </mat-form-field>
         <mat-form-field class="">
           <mat-label>Фамилия</mat-label>
-          <input matInput placeholder="Ведите фамилию" formControlName="surname">
+          <input matInput placeholder="Ведите фамилию" type="surname" formControlName="surname">
           <mat-error *ngIf="!signupForm.get('surname').valid && signupForm.get('surname').touched">Фамилия должна быть минимум 2 символа</mat-error>
         </mat-form-field>
         <mat-form-field class="">
           <mat-label>Имя пользователя</mat-label>
-          <input matInput placeholder="Ведите имя пользователя" formControlName="username">
+          <input matInput placeholder="Ведите имя пользователя" type="username" formControlName="username">
           <mat-error *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">Имя пользователя минимум 4 симвла</mat-error>
         </mat-form-field>
         <mat-form-field class="">
           <mat-label>Е-майл</mat-label>
-          <input type="email" matInput  placeholder="Ведите е-майл" formControlName="email">
+          <input type="email" matInput  placeholder="Ведите е-майл" type="email" formControlName="email">
           <mat-error *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">Е-майл введён не верно</mat-error>
         </mat-form-field>
         <div formGroupName="passData">
           <mat-form-field class="">
             <mat-label>Пароль</mat-label>
-            <input type="password" matInput placeholder="Ведите пароль" formControlName="password">
+            <input type="password" matInput placeholder="Ведите пароль" type="password" formControlName="password">
             <mat-error *ngIf="!signupForm.get('passData.password').valid && signupForm.get('passData.password').touched">Минимальная длинна пароля 5 симвалов</mat-error>
           </mat-form-field>
           <mat-form-field class="">
@@ -66,6 +66,7 @@
         <mat-error *ngIf="!signupForm.get('passData').valid && signupForm.get('passData').touched">Пароль не совпадает</mat-error>
         <mat-error #errReg ></mat-error>
         <button mat-stroked-button [disabled]="!signupForm.valid">Зарегистрироваться </button>
+        <div #success class="text-successful"></div>
       </form>
     </mat-expansion-panel>
   </section>

@@ -29,4 +29,22 @@ export class Profile {
         });
     });
   }
+
+  public changeData(datatoChange: string, optionTochange: string) {
+    const data = {
+      datatoChange,
+      optionTochange
+    };
+    return new Promise((res, rej) => {
+      this.http.post<any>('http://localhost:800/api/blog/myprofile/change_name', data)
+        .subscribe((serverResponse) => {
+          console.log(serverResponse.accept);
+          if (serverResponse.accept) {
+            res(serverResponse.data);
+          } else {
+            rej('Ошибка ' + serverResponse);
+          }
+        });
+    });
+  }
 }
