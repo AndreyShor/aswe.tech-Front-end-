@@ -75,15 +75,40 @@
       margin-right: 50px;
 
       .user_image {
-        width: 300px;
-        height: 280px;
-        background-image: url("/assets/img/blog/unnamed.png");
+        width: 230px;
+        height: 270px;
+        margin-bottom: 40px;
         background-repeat: no-repeat;
+        img{
+          width: 100%;
+          height: auto;
+          border-radius: 20px;
+        }
+      }
+
+      .manage{
+        margin-top: -80px;
       }
 
       .button{
         width: 200px;
         margin-top: 20px;
+        &.green, &.red{
+          background-color: grey;
+          color: white;
+        }
+        &.green:hover{
+          background-color: rgb(102, 212, 102);
+          color: white;
+        }
+        &.red:hover{
+          background-color: rgb(245, 90, 90);
+          color: white;
+        }
+      }
+
+      input[type="file"]{
+        visibility: hidden;
       }
     }
     // Data without images

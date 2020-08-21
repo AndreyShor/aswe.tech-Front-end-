@@ -21,7 +21,8 @@ export class Profile {
             name: string,
             surname: string,
             username: string,
-            email: string
+            email: string,
+            imageURL?: string
           }
         } > ('http://localhost:800/api/blog/myprofile', token)
         .subscribe((serverResponse) => {
@@ -44,6 +45,17 @@ export class Profile {
           } else {
             rej('Ошибка ' + serverResponse);
           }
+        });
+    });
+  }
+  public saveProfileImage(image: File) {
+    const data = new FormData();
+    data.append('image', image, 'Photmkdml');
+    console.log(data);
+    return new Promise((res, rej) => {
+      this.http.post<any>('http://localhost:800/api/blog/myprofile/updateProfileImage', data)
+        .subscribe((serverResponse) => {
+           res(true);
         });
     });
   }

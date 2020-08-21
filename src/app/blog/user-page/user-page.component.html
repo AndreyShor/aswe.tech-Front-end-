@@ -3,18 +3,21 @@
   <section class="edit_section" *ngIf="editOnOff">
     <h2>Меню редактирования профиля</h2>
     <form [formGroup]="editForm" (ngSubmit)="onEdit()">
-      <mat-form-field class="" *ngIf="!(editmode === 'email')">
+
+      <mat-form-field *ngIf="!(editmode === 'email')">
         <mat-label>{{ editName }}</mat-label>
         <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="userFullName">
         <mat-error *ngIf="!editForm.get('userFullName').valid && editForm.get('userFullName').touched">Данные введины не
           верно</mat-error>
       </mat-form-field>
-      <mat-form-field class="" *ngIf="editmode === 'email'">
+
+      <mat-form-field *ngIf="editmode === 'email'">
         <mat-label>{{ editName }}</mat-label>
         <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="email">
         <mat-error *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Е-майл введён не верно
         </mat-error>
       </mat-form-field>
+
       <button mat-stroked-button color="primary" [disabled]="!editForm.controls.email.valid"
         *ngIf="editmode === 'email'">Изменить </button>
       <button mat-stroked-button color="primary" [disabled]="!editForm.controls.userFullName.valid"
@@ -27,9 +30,19 @@
   <mat-spinner *ngIf='spinner'></mat-spinner>
   <h1>Ваш Профиль</h1>
   <div class="user_info">
-    <div class="profile_image">
-      <div class="user_image"></div>
-      <div class="button">Сменить аввтврку</div>
+    <div class="profile_image" [formGroup]="imageForm">
+      <div class="user_image" *ngIf="!(imagePreview !== '' && imagePreview && imageForm.get('image').valid)">
+        <img [src]="imgUrl ? imgUrl : '/assets/img/blog/unnamed.png'" alt="image">
+      </div>
+      <div class="user_image" *ngIf="imagePreview !== '' && imagePreview && imageForm.get('image').valid">
+        <img [src]="imagePreview" alt="image">
+      </div>
+      <button class="button" (click) = "filePicker.click()" *ngIf="!(imagePreview !== '' && imagePreview && imageForm.get('image').valid)">Сменить аввтврку</button>
+      <input type="file" #filePicker (change) = "onImagePicked($event)">
+      <div class="manage">
+        <button class="button green" *ngIf="imagePreview !== '' && imagePreview && imageForm.get('image').valid" (click) = "saveImage()">Сохранить аватарку</button>
+        <button class="button red" *ngIf="imagePreview !== '' && imagePreview && imageForm.get('image').valid" (click) = "cancelImage()">Отмена сохранения</button>
+      </div>
     </div>
     <ul class="user_data">
       <h2>Информация</h2>
@@ -39,7 +52,7 @@
           <hr>
           <div class="label">Ваше Имя</div>
         </div>
-        <div class="button" (click)="editFormCloseOpen(true, 'Имя', 'name')">Сменить Имя</div>
+        <button class="button" (click)="editFormCloseOpen(true, 'Имя', 'name')">Сменить Имя</button>
       </li>
       <li>
         <div class="data">
@@ -47,7 +60,7 @@
           <hr>
           <div class="label">Ваше Фамилия</div>
         </div>
-        <div class="button" (click)="editFormCloseOpen(true, 'Фамилию', 'surname')">Сменить Фамилию</div>
+        <button class="button" (click)="editFormCloseOpen(true, 'Фамилию', 'surname')">Сменить Фамилию</button>
       </li>
       <li>
         <div class="data">
@@ -55,7 +68,7 @@
           <hr>
           <div class="label">Ваш Е-майл</div>
         </div>
-        <div class="button" (click)="editFormCloseOpen(true, 'Е-майл', 'email')">Сменить Е-майл</div>
+        <button class="button" (click)="editFormCloseOpen(true, 'Е-майл', 'email')">Сменить Е-майл</button>
       </li>
       <li>
         <div class="data">
@@ -63,7 +76,7 @@
           <hr>
           <div class="label">Ваше Пароль</div>
         </div>
-        <div class="button" (click)="editFormCloseOpen(true, 'Пароль', 'password' )">Сменить Пароль</div>
+        <button class="button" (click)="editFormCloseOpen(true, 'Пароль', 'password' )">Сменить Пароль</button>
       </li>
     </ul>
   </div>
