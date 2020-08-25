@@ -18,7 +18,9 @@ import { Subscription } from 'rxjs';
 export class MainNavComponent implements OnInit, OnDestroy  {
 
   private authListenerSubs: Subscription;
+  private adminListenerSubs: Subscription;
   isAuthUser = false;
+  isAdminUser = false;
 
   isHandset: any;
   isTablet: any;
@@ -60,9 +62,17 @@ export class MainNavComponent implements OnInit, OnDestroy  {
     this.isTablet = this.LayoutService.isTablet$;
     this.isWeb = this.LayoutService.isWeb$;
     this.isAuthUser = this.auth.getisAuth();
+    this.isAdminUser = this.auth.getisAdmin();
+
     this.authListenerSubs =  this.auth.getAuthStatusListener()
       .subscribe(isAuth => {
         this.isAuthUser = isAuth;
+        console.log("this.isAuthUser", this.isAuthUser);
+      });
+    this.adminListenerSubs = this.auth.getAdmintatusListener()
+      .subscribe(isAdmin => {
+        this.isAdminUser = isAdmin;
+        console.log("this.isAdminUser", this.isAdminUser);
       });
 
 

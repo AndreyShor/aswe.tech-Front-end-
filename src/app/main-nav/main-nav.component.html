@@ -5,7 +5,7 @@
       <mat-list-item role="listitem" *ngIf="!isAuthUser"><a matLine routerLink="/me" i18n='@@nav_abme'>About Me</a></mat-list-item>
       <mat-list-item role="listitem" *ngIf="!isAuthUser"><a matLine routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></mat-list-item>
       <mat-list-item role="listitem" ><a matLine routerLink="/blog" i18n='@@nav_por'>Blog</a></mat-list-item>
-      <mat-list-item role="listitem" *ngIf="isAuthUser"><a matLine routerLink="/blog/auth" i18n='@@nav_por' >Admin</a></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="isAdminUser && isAuthUser"><a matLine routerLink="/blog/auth" i18n='@@nav_por' >Admin</a></mat-list-item>
       <mat-list-item role="listitem" *ngIf="!isAuthUser"><a matLine routerLink="/blog/auth" i18n='@@nav_por' >Login</a></mat-list-item>
       <mat-list-item role="listitem" *ngIf="isAuthUser"><a matLine (click)="Exit()" i18n='@@nav_por'>Exit</a></mat-list-item>
       <div class="last">
@@ -30,7 +30,7 @@
         <div class="btn_menu" *ngIf="!isAuthUser"><a routerLink="/portfolio" i18n='@@nav_por'>Portfolio</a></div>
         <div class="btn_menu"><a routerLink="/blog" i18n='@@nav_por'>Blog</a></div>
         <div class="btn_menu" *ngIf="isAuthUser"><a routerLink="/blog/user-page" i18n='@@nav_por'>My Profile</a></div>
-        <div class="btn_menu" *ngIf="isAuthUser"><a routerLink="/blog/admin" i18n='@@nav_por'>Admin</a></div>
+        <div class="btn_menu" *ngIf="isAdminUser && isAuthUser"><a routerLink="/blog/admin" i18n='@@nav_por'>Admin</a></div>
         <div class="btn_menu" *ngIf="!isAuthUser"><a routerLink="/blog/auth" i18n='@@nav_por'>Login</a></div>
         <div class="btn_menu" *ngIf="isAuthUser"><a (click)="onLogOut()" i18n='@@nav_por' >Exit</a></div>
         <div class="btn_menu"><a routerLink="/contact" i18n='@@nav_contact'>Contacts</a></div>
