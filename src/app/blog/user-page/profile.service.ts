@@ -39,7 +39,6 @@ export class Profile {
     return new Promise((res, rej) => {
       this.http.post<any>('http://localhost:800/api/blog/myprofile/change_name', data)
         .subscribe((serverResponse) => {
-          console.log(serverResponse.accept);
           if (serverResponse.accept) {
             res(serverResponse.data);
           } else {

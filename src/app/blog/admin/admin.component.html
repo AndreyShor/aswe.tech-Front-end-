@@ -1,4 +1,32 @@
 <div class="page_admin">
+
+
+    <section class="edit_section" *ngIf="editOnOff">
+    <form [formGroup]="editForm" (ngSubmit)="onEdit()">
+      <div *ngIf="editmode === 'user'">
+        <mat-label>{{ editName }}</mat-label>
+        <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="userFullName">
+        <mat-error *ngIf="!editForm.get('userFullName').valid && editForm.get('userFullName').touched">Данные введины не
+          верно</mat-error>
+      </div>
+
+      <div *ngIf="editmode === 'article'">
+        <mat-label>{{ editName }}</mat-label>
+        <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="email">
+        <mat-error *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Е-майл введён не верно
+        </mat-error>
+      </div>
+
+      <div *ngIf="editmode === 'deleteArticle' || editmode === 'deleteUser'">
+        <h4 *ngIf="editmode === 'deleteArticle'">Подтвердите удаление статьи '{{ editName }}'</h4>
+        <h4 *ngIf="editmode === 'deleteUser'">Подтвердите удаление пользователя '{{ editName }}'</h4>
+        <button mat-stroked-button *ngIf="editmode === 'deleteArticle'" color="primary" (click)="onDeleteArticle(editId)">Удалить </button>
+        <button mat-stroked-button *ngIf="editmode === 'deleteUser'" color="primary" (click)="onDeleteUser(editId)">Удалить </button>
+        <button mat-stroked-button color="primary" (click)="editFormCloseOpen(false)">Отмена </button>
+      </div>
+    </form>
+  </section>
+
   <h1>Панель адменистратора</h1>
 
   <section class="users">
@@ -14,59 +42,14 @@
         </div>
         <div class="user_list_area">
           <ul>
-            <li class="user">
+            <li class="user" *ngFor="let el of userList">
               <div class="name">
-                <h2>Andrey123</h2>
+                <h2 >{{el.email}}</h2>
                 <hr>
               </div>
               <div class="button button_edit">E</div>
               <div class="button button_comments">C</div>
-              <div class="button button_ban">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Andrey123</h2>
-                <hr>
-              </div>
-              <div class="button button_edit">E</div>
-              <div class="button button_comments">C</div>
-              <div class="button button_ban">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Andrey123</h2>
-                <hr>
-              </div>
-              <div class="button button_edit">E</div>
-              <div class="button button_comments">C</div>
-              <div class="button button_ban">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Andrey123</h2>
-                <hr>
-              </div>
-              <div class="button button_edit">E</div>
-              <div class="button button_comments">C</div>
-              <div class="button button_ban">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Andrey123</h2>
-                <hr>
-              </div>
-              <div class="button button_edit">E</div>
-              <div class="button button_comments">C</div>
-              <div class="button button_ban">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Andrey123</h2>
-                <hr>
-              </div>
-              <div class="button button_edit">E</div>
-              <div class="button button_comments">C</div>
-              <div class="button button_ban">D</div>
+              <div class="button button_ban" (click)="editFormCloseOpen(true, el.email, 'deleteUser', el.email)">D</div>
             </li>
           </ul>
         </div>
@@ -81,38 +64,6 @@
         </div>
         <div class="user_list_area">
           <ul>
-            <li class="user">
-              <div class="name">
-                <h2>Nikita2322</h2>
-                <hr>
-              </div>
-              <div class="button button_forgive">F</div>
-              <div class="button button_delete">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Nikita2322</h2>
-                <hr>
-              </div>
-              <div class="button button_forgive">F</div>
-              <div class="button button_delete">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Nikita2322</h2>
-                <hr>
-              </div>
-              <div class="button button_forgive">F</div>
-              <div class="button button_delete">D</div>
-            </li>
-            <li class="user">
-              <div class="name">
-                <h2>Nikita2322</h2>
-                <hr>
-              </div>
-              <div class="button button_forgive">F</div>
-              <div class="button button_delete">D</div>
-            </li>
             <li class="user">
               <div class="name">
                 <h2>Nikita2322</h2>
@@ -139,41 +90,17 @@
       </mat-expansion-panel-header>
       <mat-form-field>
         <mat-label>Фильтр по статьям</mat-label>
-        <mat-select>
-          <mat-option>
-            Экономика
-          </mat-option>
-          <mat-option>
-            Программирование
-          </mat-option>
-          <mat-option>
-            Путишествие
+        <mat-select [(value)]="selectedGenre" #genreFilter>
+          <mat-option value="{{genre.name}}" *ngFor="let genre of genreList">
+            {{genre.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <ul class="article_list">
-        <li class="article">
-          <div class="article_name">Реструктуризация финансовых рынков</div>
+        <li class="article" *ngFor="let el of articleList">
+          <div class="article_name">{{el.name}}</div>
           <div class="button button_edit">E</div>
-          <div class="button button_delete">D</div>
-          <hr>
-        </li>
-        <li class="article">
-          <div class="article_name">Реструктуризация финансовых рынков</div>
-          <div class="button button_edit">E</div>
-          <div class="button button_delete">D</div>
-          <hr>
-        </li>
-        <li class="article">
-          <div class="article_name">Реструктуризация финансовых рынков</div>
-          <div class="button button_edit">E</div>
-          <div class="button button_delete">D</div>
-          <hr>
-        </li>
-        <li class="article">
-          <div class="article_name">Реструктуризация финансовых рынков</div>
-          <div class="button button_edit">E</div>
-          <div class="button button_delete">D</div>
+          <div class="button button_delete" (click)="editFormCloseOpen(true, el.name, 'deleteArticle', el._id)">D</div>
           <hr>
         </li>
       </ul>
@@ -188,23 +115,17 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <div class="add_section">
+      <div class="add_section" [formGroup]="addArticleForm" >
         <div class="upper">
           <mat-form-field class="article_name">
             <mat-label>Название статьи</mat-label>
-            <input matInput placeholder="Введите название">
+            <input matInput placeholder="Введите название"  formControlName="name">
           </mat-form-field>
           <mat-form-field class="article_filter">
             <mat-label>Выберете раздел</mat-label>
-            <mat-select>
-              <mat-option>
-                Экономика
-              </mat-option>
-              <mat-option>
-                Программирование
-              </mat-option>
-              <mat-option>
-                Путишествие
+            <mat-select [(value)]="selectedGenre" #genre formControlName="genre">
+              <mat-option value="{{genre.name}}" *ngFor="let genre of genreList">
+                {{genre.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -212,12 +133,13 @@
         <div class="mytextarea">
           <mat-form-field appearance="fill" >
             <mat-label>Текст статьи</mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput formControlName="textArea"></textarea>
           </mat-form-field>
         </div>
         <div class="lower">
-          <button mat-button>Выбери картинку</button>
-          <button mat-button>Создать</button>
+          <button class="button" (click) = "filePicker.click()" mat-button>Выбери картинку</button>
+          <input type="file" #filePicker (change) = "onImagePicked($event)">
+          <button mat-button (click) = "addArticle()">Создать</button>
         </div>
       </div>
     </mat-expansion-panel>
