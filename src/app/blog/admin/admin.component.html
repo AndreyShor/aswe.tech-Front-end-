@@ -1,6 +1,5 @@
 <div class="page_admin">
 
-
     <section class="edit_section" *ngIf="editOnOff">
     <form [formGroup]="editForm" (ngSubmit)="onEdit()">
       <div *ngIf="editmode === 'user'">
@@ -8,13 +7,6 @@
         <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="userFullName">
         <mat-error *ngIf="!editForm.get('userFullName').valid && editForm.get('userFullName').touched">Данные введины не
           верно</mat-error>
-      </div>
-
-      <div *ngIf="editmode === 'article'">
-        <mat-label>{{ editName }}</mat-label>
-        <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="email">
-        <mat-error *ngIf="!editForm.get('email').valid && editForm.get('email').touched">Е-майл введён не верно
-        </mat-error>
       </div>
 
       <div *ngIf="editmode === 'deleteArticle' || editmode === 'deleteUser'">
@@ -48,7 +40,7 @@
                 <hr>
               </div>
               <div class="button button_edit">E</div>
-              <div class="button button_comments">C</div>
+              <!-- <div class="button button_comments">C</div> -->
               <div class="button button_ban" (click)="editFormCloseOpen(true, el.email, 'deleteUser', el.email)">D</div>
             </li>
           </ul>
@@ -99,7 +91,8 @@
       <ul class="article_list">
         <li class="article" *ngFor="let el of articleList">
           <div class="article_name">{{el.name}}</div>
-          <div class="button button_edit">E</div>
+          <div class="button button_edit"
+           (click) = "editArticle(el.name, el.text, el.articleGenre, expansion)">E</div>
           <div class="button button_delete" (click)="editFormCloseOpen(true, el.name, 'deleteArticle', el._id)">D</div>
           <hr>
         </li>
@@ -107,11 +100,11 @@
     </mat-expansion-panel>
   </section>
 
-  <section class="add_article">
-    <mat-expansion-panel>
+  <section class="add_article" #expansion>
+    <mat-expansion-panel #MatExpansionPanel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Добавить статью
+          {{ mat_title}}
         </mat-panel-title>
       </mat-expansion-panel-header>
 
@@ -123,7 +116,7 @@
           </mat-form-field>
           <mat-form-field class="article_filter">
             <mat-label>Выберете раздел</mat-label>
-            <mat-select [(value)]="selectedGenre" #genre formControlName="genre">
+            <mat-select [(value)]="selectedGenre" formControlName="genre">
               <mat-option value="{{genre.name}}" *ngFor="let genre of genreList">
                 {{genre.name}}
               </mat-option>
@@ -140,6 +133,7 @@
           <button class="button" (click) = "filePicker.click()" mat-button>Выбери картинку</button>
           <input type="file" #filePicker (change) = "onImagePicked($event)">
           <button mat-button (click) = "addArticle()">Создать</button>
+          <button mat-button *ngIf="editmode === 'editArticle'" (click) = "cancelEditArticle()">Отмена</button>
         </div>
       </div>
     </mat-expansion-panel>

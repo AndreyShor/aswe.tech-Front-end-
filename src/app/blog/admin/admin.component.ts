@@ -20,6 +20,8 @@ import {
 } from '@angular/forms';
 import { mimeType } from '../user-page/mime-type.validator';
 import { runInThisContext } from 'vm';
+import { Router } from '@angular/router';
+import { MatExpansionPanel } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-admin',
@@ -39,7 +41,11 @@ export class AdminComponent implements OnInit {
   editForm: FormGroup;
   editId: string;
 
+  // tslint:disable-next-line: variable-name
+  mat_title = 'Добавить статью';
 
+  @ViewChild('MatExpansionPanel', {static: true}) matExpansionPanelElement: MatExpansionPanel;
+  expandPanel = true;
   genreList = [{
       name: 'Economics'
     },
@@ -54,7 +60,7 @@ export class AdminComponent implements OnInit {
 
   addArticleForm: FormGroup;
 
-  constructor(private admin: Admin, private auth: Auth) {}
+  constructor(private admin: Admin, private auth: Auth, private router: Router) {}
 
   ngOnInit() {
     this.admin.fetcData(this.auth.getToken())
@@ -93,7 +99,35 @@ export class AdminComponent implements OnInit {
       articleGenre: genre
     };
 
-    this.admin.addArticle(articleData, this.addArticleForm.value.image);
+    this.admin.addArticle(articleData, this.addArticleForm.value.image)
+    .then(() => {
+      this.matExpansionPanelElement.close();
+      this.addArticleForm.controls.name.setValue('');
+      this.addArticleForm.controls.textArea.setValue('');
+      this.addArticleForm.controls.genre.setValue('');
+      this.admin.fetcData(this.auth.getToken())
+      .then((data: any) => {
+        this.articleList = data.articleList;
+      });
+    });
+  }
+
+  editArticle(title: string, text?: string, genre?: string, el?: HTMLElement) {
+    this.addArticleForm.controls.name.setValue(title);
+    this.addArticleForm.controls.textArea.setValue(text);
+    this.addArticleForm.controls.genre.setValue(genre);
+    this.mat_title = 'Редактировать статью';
+    this.matExpansionPanelElement.open();
+    this.editmode = 'editArticle';
+    el.scrollIntoView({behavior: 'smooth'});
+  }
+
+  cancelEditArticle() {
+    this.matExpansionPanelElement.close();
+    this.addArticleForm.controls.name.setValue('');
+    this.addArticleForm.controls.textArea.setValue('');
+    this.addArticleForm.controls.genre.setValue('');
+    this.mat_title = 'Добавить статью';
   }
 
   onImagePicked(event: Event) {
@@ -105,19 +139,18 @@ export class AdminComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = (reader.result as string);
-      console.log('File', this.addArticleForm.value.image)
+      console.log('File', this.addArticleForm.value.image);
       console.log('Previw',  this.imagePreview);
     };
     reader.readAsDataURL(file);
   }
 
-  onDeleteArticle(id: any){
+  onDeleteArticle(id: any) {
     this.admin.deleteArticle(id)
     .then((accept) => {
       if (accept) {
         this.admin.fetcData(this.auth.getToken())
         .then((data: any) => {
-          this.userList = data.userLIst;
           this.articleList = data.articleList;
         });
       }
@@ -125,19 +158,19 @@ export class AdminComponent implements OnInit {
     this.editFormCloseOpen(false);
   }
 
-  onDeleteUser(email: any){
+  onDeleteUser(email: any) {
     this.admin.deleteUser(email)
     .then((accept) => {
       if (accept) {
         this.admin.fetcData(this.auth.getToken())
         .then((data: any) => {
           this.userList = data.userLIst;
-          this.articleList = data.articleList;
         });
       }
     });
     this.editFormCloseOpen(false);
   }
+
 
 
   editFormCloseOpen(option: boolean, fieldText?: string, whatChange?: string, editId?: string) {
@@ -166,4 +199,6 @@ export class AdminComponent implements OnInit {
       this.editId = '';
     }
   }
+
+
 }

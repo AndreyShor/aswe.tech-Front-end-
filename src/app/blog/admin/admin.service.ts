@@ -31,7 +31,8 @@ export class Admin {
             const serverData = {
               userLIst: serverResponse.userList,
               articleList: serverResponse.articleList
-            }
+            };
+            console.log(serverData);
             res(serverData);
           }
 
@@ -84,10 +85,11 @@ export class Admin {
     return new Promise((res, rej) => {
       this.http.post('http://localhost:800/api/admin/addArtcile', data)
         .subscribe((serverResponse: any) => {
-          console.log(serverResponse);
+          res(serverResponse);
         } );
     });
   }
+
 
 
 }
