@@ -50,7 +50,6 @@ export class Auth {
   }
 
 
-
   public login(data: LoginData) {
     return new Promise((res, rej) => {
       this.http.post < {

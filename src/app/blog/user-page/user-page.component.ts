@@ -74,7 +74,7 @@ export class UserPageComponent implements OnInit {
 
     this.editForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      userFullName: new FormControl(null, [Validators.required, Validators.minLength(2)])
+      userFullName: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)])
     });
 
     this.imageForm = new FormGroup({

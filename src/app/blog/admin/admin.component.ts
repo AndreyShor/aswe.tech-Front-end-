@@ -38,8 +38,9 @@ export class AdminComponent implements OnInit {
   editName: string;
   editmode: string;
   editValue: string;
-  editForm: FormGroup;
   editId: string;
+  editForm: FormGroup;
+  addArticleForm: FormGroup;
 
   // tslint:disable-next-line: variable-name
   mat_title = 'Добавить статью';
@@ -57,8 +58,6 @@ export class AdminComponent implements OnInit {
     }
   ];
 
-
-  addArticleForm: FormGroup;
 
   constructor(private admin: Admin, private auth: Auth, private router: Router) {}
 
@@ -80,8 +79,11 @@ export class AdminComponent implements OnInit {
     });
 
     this.editForm = new FormGroup({
+      name: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      surname: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      username: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       email: new FormControl(null, [Validators.required, Validators.email]),
-      userFullName: new FormControl(null, [Validators.required, Validators.minLength(2)])
+      pass : new FormControl(null, [Validators.required, Validators.minLength(2)]),
     });
   }
 
@@ -112,10 +114,24 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  editArticle(title: string, text?: string, genre?: string, el?: HTMLElement) {
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.addArticleForm.patchValue({
+      image: file
+    });
+    this.addArticleForm.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = (reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  onEditArticle(title: string, text: string, genre: string, el: HTMLElement, id: string) {
     this.addArticleForm.controls.name.setValue(title);
     this.addArticleForm.controls.textArea.setValue(text);
     this.addArticleForm.controls.genre.setValue(genre);
+    this.editId = id;
     this.mat_title = 'Редактировать статью';
     this.matExpansionPanelElement.open();
     this.editmode = 'editArticle';
@@ -130,19 +146,34 @@ export class AdminComponent implements OnInit {
     this.mat_title = 'Добавить статью';
   }
 
-  onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.addArticleForm.patchValue({
-      image: file
-    });
-    this.addArticleForm.get('image').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = (reader.result as string);
-      console.log('File', this.addArticleForm.value.image);
-      console.log('Previw',  this.imagePreview);
+  submitEditArticle() {
+    const title = this.addArticleForm.get('name').value;
+    const textArea = this.addArticleForm.get('textArea').value;
+    const genre = this.addArticleForm.get('genre').value;
+    if (genre === null) {
+      return;
+    }
+
+    const editArticleData = {
+      articleName: title,
+      text: textArea,
+      articleGenre: genre,
+      id: this.editId
     };
-    reader.readAsDataURL(file);
+
+
+    this.admin.editArticle(editArticleData)
+    .then(() => {
+      this.matExpansionPanelElement.close();
+      this.addArticleForm.controls.name.setValue('');
+      this.addArticleForm.controls.textArea.setValue('');
+      this.addArticleForm.controls.genre.setValue('');
+      this.editmode = '';
+      this.admin.fetcData(this.auth.getToken())
+      .then((data: any) => {
+        this.articleList = data.articleList;
+      });
+    });
   }
 
   onDeleteArticle(id: any) {
@@ -171,6 +202,48 @@ export class AdminComponent implements OnInit {
     this.editFormCloseOpen(false);
   }
 
+  onEditUser(name: string, surname: string, username: string, email: string, id: string ) {
+    this.editmode = 'user';
+    this.editOnOff = true;
+    this.editForm.controls.name.setValue(name);
+    this.editForm.controls.surname.setValue(surname);
+    this.editForm.controls.username.setValue(username);
+    this.editForm.controls.email.setValue(email);
+    this.editForm.controls.pass.setValue('************');
+    this.editId = id;
+  }
+
+  submitEditUser() {
+
+    const name = this.editForm.get('name').value;
+    const surname = this.editForm.get('surname').value;
+    const email = this.editForm.get('email').value;
+
+    const editUserData = {
+      name,
+      surname,
+      email,
+      id: this.editId
+    };
+
+
+    this.admin.editUsser(editUserData)
+    .then(() => {
+      this.editForm.controls.name.setValue('');
+      this.editForm.controls.surname.setValue('');
+      this.editForm.controls.username.setValue('');
+      this.editForm.controls.email.setValue('');
+      this.editForm.controls.pass.setValue('');
+      this.editmode = '';
+      this.editFormCloseOpen(false);
+      this.admin.fetcData(this.auth.getToken())
+      .then((data: any) => {
+        this.userList = data.userLIst;
+      });
+    });
+  }
+
+
 
 
   editFormCloseOpen(option: boolean, fieldText?: string, whatChange?: string, editId?: string) {
@@ -180,19 +253,6 @@ export class AdminComponent implements OnInit {
     this.editId = editId;
 
     // Set text in a form;
-    switch (whatChange) {
-      case 'editUser':
-        // this.editForm.controls.userFullName.setValue(this.profileName.nativeElement.innerHTML);
-        break;
-      case 'editArticle':
-        // this.editForm.controls.userFullName.setValue(this.profileSurname.nativeElement.innerHTML);
-        break;
-      case 'deleteArticle':
-        // this.editForm.controls.email.setValue(this.profileEmail.nativeElement.innerHTML);
-        break;
-      case 'deleteUser':
-        break;
-    }
     if (!option) {
       this.editmode = '';
       this.editValue = '';

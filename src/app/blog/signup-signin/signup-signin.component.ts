@@ -37,13 +37,13 @@ export class SignupSigninComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      name: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-      surname: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-      username: new FormControl(null, [Validators.required, Validators.minLength(4)]),
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      name: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      surname: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      username: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
+      email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(40)]),
       passData: new FormGroup({
-        password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
-        confirmPassword: new FormControl(null, [Validators.required, Validators.minLength(5)])
+        password: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
+        confirmPassword: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(30)])
       }, this.PassValidator)
     });
 
@@ -53,6 +53,7 @@ export class SignupSigninComponent implements OnInit {
       passwordLogin: new FormControl(null, [Validators.required, Validators.minLength(5)])
     });
   }
+
   onSignUp() {
     // delete error mesage for second trial
     this.serverErrMessage.nativeElement.innerHTML = '';
@@ -76,7 +77,6 @@ export class SignupSigninComponent implements OnInit {
       this.spinner = false;
     });
   }
-
 
   onLogin() {
     // delete error mesage for second trial

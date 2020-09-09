@@ -1,19 +1,40 @@
 <div class="page_admin">
 
-    <section class="edit_section" *ngIf="editOnOff">
-    <form [formGroup]="editForm" (ngSubmit)="onEdit()">
-      <div *ngIf="editmode === 'user'">
-        <mat-label>{{ editName }}</mat-label>
-        <input matInput [placeholder]="'Введите ' + editName" [value]='editValue' formControlName="userFullName">
-        <mat-error *ngIf="!editForm.get('userFullName').valid && editForm.get('userFullName').touched">Данные введины не
-          верно</mat-error>
+  <section class="edit_section" *ngIf="editOnOff">
+    <form [formGroup]="editForm">
+      <div  class="userEdit" *ngIf="editmode === 'user'">
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input matInput [placeholder]="'Введите имя'" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Фамилия</mat-label>
+        <input matInput [placeholder]="'Введите Фамилия'" formControlName="surname">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Е-мейл</mat-label>
+        <input matInput [placeholder]="'Введите Е-мейл'" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Пароль</mat-label>
+        <input matInput [placeholder]="'Введите Пароль'" formControlName="pass">
+      </mat-form-field>
+
+        <button mat-button  (click)="submitEditUser()">Редактировать</button>
+        <button mat-button  (click)="editFormCloseOpen(false)">Отмена</button>
+
       </div>
 
       <div *ngIf="editmode === 'deleteArticle' || editmode === 'deleteUser'">
         <h4 *ngIf="editmode === 'deleteArticle'">Подтвердите удаление статьи '{{ editName }}'</h4>
         <h4 *ngIf="editmode === 'deleteUser'">Подтвердите удаление пользователя '{{ editName }}'</h4>
-        <button mat-stroked-button *ngIf="editmode === 'deleteArticle'" color="primary" (click)="onDeleteArticle(editId)">Удалить </button>
-        <button mat-stroked-button *ngIf="editmode === 'deleteUser'" color="primary" (click)="onDeleteUser(editId)">Удалить </button>
+        <button mat-stroked-button *ngIf="editmode === 'deleteArticle'" color="primary"
+          (click)="onDeleteArticle(editId)">Удалить </button>
+        <button mat-stroked-button *ngIf="editmode === 'deleteUser'" color="primary"
+          (click)="onDeleteUser(editId)">Удалить </button>
         <button mat-stroked-button color="primary" (click)="editFormCloseOpen(false)">Отмена </button>
       </div>
     </form>
@@ -36,12 +57,12 @@
           <ul>
             <li class="user" *ngFor="let el of userList">
               <div class="name">
-                <h2 >{{el.email}}</h2>
+                <h2>{{el.name}} {{el.surname}}</h2>
                 <hr>
               </div>
-              <div class="button button_edit">E</div>
+              <div class="button button_edit" (click) = "onEditUser(el.name, el.surname, el.username, el.email, el._id)">E</div>
               <!-- <div class="button button_comments">C</div> -->
-              <div class="button button_ban" (click)="editFormCloseOpen(true, el.email, 'deleteUser', el.email)">D</div>
+              <div class="button button_ban" (click)="editFormCloseOpen(true, el.name, 'deleteUser', el.email)">D</div>
             </li>
           </ul>
         </div>
@@ -91,8 +112,8 @@
       <ul class="article_list">
         <li class="article" *ngFor="let el of articleList">
           <div class="article_name">{{el.name}}</div>
-          <div class="button button_edit"
-           (click) = "editArticle(el.name, el.text, el.articleGenre, expansion)">E</div>
+          <div class="button button_edit" (click)="onEditArticle(el.name, el.text, el.articleGenre, expansion, el._id)">E
+          </div>
           <div class="button button_delete" (click)="editFormCloseOpen(true, el.name, 'deleteArticle', el._id)">D</div>
           <hr>
         </li>
@@ -108,11 +129,11 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
 
-      <div class="add_section" [formGroup]="addArticleForm" >
+      <div class="add_section" [formGroup]="addArticleForm">
         <div class="upper">
           <mat-form-field class="article_name">
             <mat-label>Название статьи</mat-label>
-            <input matInput placeholder="Введите название"  formControlName="name">
+            <input matInput placeholder="Введите название" formControlName="name">
           </mat-form-field>
           <mat-form-field class="article_filter">
             <mat-label>Выберете раздел</mat-label>
@@ -124,16 +145,18 @@
           </mat-form-field>
         </div>
         <div class="mytextarea">
-          <mat-form-field appearance="fill" >
+          <mat-form-field appearance="fill">
             <mat-label>Текст статьи</mat-label>
             <textarea matInput formControlName="textArea"></textarea>
           </mat-form-field>
         </div>
         <div class="lower">
-          <button class="button" (click) = "filePicker.click()" mat-button>Выбери картинку</button>
-          <input type="file" #filePicker (change) = "onImagePicked($event)">
-          <button mat-button (click) = "addArticle()">Создать</button>
-          <button mat-button *ngIf="editmode === 'editArticle'" (click) = "cancelEditArticle()">Отмена</button>
+          <button class="button" *ngIf="!(editmode === 'editArticle')" (click)="filePicker.click()" mat-button>Выбери
+            картинку</button>
+          <input type="file" #filePicker (change)="onImagePicked($event)">
+          <button mat-button *ngIf="!(editmode === 'editArticle')" (click)="addArticle()">Создать</button>
+          <button mat-button *ngIf="editmode === 'editArticle'" (click)="submitEditArticle()">Редактировать</button>
+          <button mat-button *ngIf="editmode === 'editArticle'" (click)="cancelEditArticle()">Отмена</button>
         </div>
       </div>
     </mat-expansion-panel>

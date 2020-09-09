@@ -90,6 +90,24 @@ export class Admin {
     });
   }
 
+  public editArticle(articleData: {articleName: string, text: string, articleGenre: string, id: string}) {
+    return new Promise((res, rej) => {
+      this.http.post('http://localhost:800/api/admin/editArticle', articleData)
+        .subscribe((serverResponse: any) => {
+          console.log(serverResponse);
+          res(serverResponse);
+        } );
+    });
+  }
 
+  public editUsser(userData: {name: string, surname: string, email: string, id: string}) {
+    return new Promise((res, rej) => {
+      this.http.post('http://localhost:800/api/admin/editUser', userData)
+        .subscribe((serverResponse: any) => {
+          console.log(serverResponse);
+          res(serverResponse);
+        } );
+    });
+  }
 
 }
