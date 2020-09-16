@@ -10,12 +10,12 @@
     </mat-select>
   </mat-form-field>
 
-  <app-article-element></app-article-element>
-  <app-article-element></app-article-element>
-  <app-article-element></app-article-element>
-  <app-article-element></app-article-element>
-  <app-article-element></app-article-element>
-  <app-article-element></app-article-element>
+  <article *ngFor="let el of articleList ">
+    <img src="/assets/img/blog/new_art_1.jpg" alt="imageOfArticle" routerLink="/blog/article">
+    <h2>{{el.title}}</h2>
+    <p>{{ el.description}}</p>
+  </article>
+
 
   <button mat-stroked-button >Предыдущая</button>
   <button mat-stroked-button>Следущая</button>
